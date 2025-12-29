@@ -14,60 +14,48 @@ const regions: Region[] = [
   {
     id: "newcastle",
     name: "Newcastle",
-    path: "M180 120 L220 100 L260 110 L270 140 L250 170 L210 175 L175 155 Z",
-    labelX: 220,
-    labelY: 140,
+    path: "M280 80 L340 60 L400 75 L420 120 L400 170 L340 185 L280 160 L270 120 Z",
+    labelX: 345,
+    labelY: 125,
   },
   {
     id: "lake-macquarie",
     name: "Lake Macquarie",
-    path: "M175 155 L210 175 L250 170 L270 200 L260 250 L220 270 L170 250 L150 200 Z",
-    labelX: 210,
-    labelY: 215,
+    path: "M280 160 L340 185 L400 170 L430 220 L420 300 L350 340 L270 310 L240 250 L250 190 Z",
+    labelX: 340,
+    labelY: 255,
   },
   {
     id: "maitland",
     name: "Maitland",
-    path: "M120 80 L180 70 L220 100 L180 120 L175 155 L150 200 L100 180 L90 130 Z",
-    labelX: 145,
-    labelY: 130,
+    path: "M150 50 L230 35 L280 80 L270 120 L280 160 L250 190 L180 170 L140 130 L130 90 Z",
+    labelX: 200,
+    labelY: 110,
   },
   {
     id: "cessnock",
     name: "Cessnock",
-    path: "M50 150 L90 130 L100 180 L150 200 L170 250 L130 280 L70 260 L40 210 Z",
-    labelX: 100,
-    labelY: 210,
+    path: "M60 120 L130 90 L140 130 L180 170 L250 190 L240 250 L270 310 L200 350 L100 320 L50 250 L40 180 Z",
+    labelX: 150,
+    labelY: 230,
   },
   {
     id: "port-stephens",
     name: "Port Stephens",
-    path: "M260 110 L310 90 L350 100 L360 140 L340 180 L300 190 L270 140 Z",
-    labelX: 310,
-    labelY: 140,
+    path: "M400 75 L480 50 L540 70 L560 130 L530 180 L460 190 L420 120 Z",
+    labelX: 480,
+    labelY: 120,
   },
 ];
 
 const ServiceAreaMap = () => {
   const [hoveredRegion, setHoveredRegion] = useState<string | null>(null);
-  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
-
-  const handleMouseMove = (e: React.MouseEvent<SVGElement>, region: Region) => {
-    const svg = e.currentTarget.closest("svg");
-    if (svg) {
-      const rect = svg.getBoundingClientRect();
-      setTooltipPosition({
-        x: e.clientX - rect.left,
-        y: e.clientY - rect.top - 60,
-      });
-    }
-  };
 
   return (
     <section
       ref={ref as React.RefObject<HTMLElement>}
-      className={`py-16 md:py-24 bg-secondary/30 transition-all duration-700 ${
+      className={`py-16 md:py-24 bg-background transition-all duration-700 ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
       aria-labelledby="service-area-heading"
@@ -92,147 +80,190 @@ const ServiceAreaMap = () => {
         </div>
 
         {/* Map Container */}
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-card rounded-2xl shadow-lg p-6 md:p-10 border border-border/50">
+        <div className="max-w-5xl mx-auto">
+          <div className="bg-primary/5 rounded-3xl p-6 md:p-10 border-2 border-primary/20">
             <div className="relative">
               <svg
-                viewBox="0 0 400 320"
+                viewBox="0 0 600 400"
                 className="w-full h-auto"
                 role="img"
                 aria-label="Interactive map of Newcastle and Hunter Region service areas"
               >
-                {/* Background water/coast effect */}
-                <defs>
-                  <linearGradient id="oceanGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="hsl(var(--accent))" stopOpacity="0.1" />
-                    <stop offset="100%" stopColor="hsl(var(--primary))" stopOpacity="0.05" />
-                  </linearGradient>
-                  <filter id="glow">
-                    <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-                    <feMerge>
-                      <feMergeNode in="coloredBlur" />
-                      <feMergeNode in="SourceGraphic" />
-                    </feMerge>
-                  </filter>
-                </defs>
-
-                {/* Ocean/background */}
+                {/* Background */}
                 <rect
                   x="0"
                   y="0"
-                  width="400"
-                  height="320"
-                  fill="url(#oceanGradient)"
-                  rx="12"
+                  width="600"
+                  height="400"
+                  fill="hsl(var(--secondary))"
+                  rx="16"
                 />
 
-                {/* Coastline decoration */}
+                {/* Decorative coastline */}
                 <path
-                  d="M270 140 Q300 120 350 100 Q380 90 400 85 L400 320 L360 320 Q340 280 300 250 Q270 220 270 200 Z"
+                  d="M420 120 Q500 80 560 70 L600 60 L600 400 L500 400 Q480 350 450 300 Q430 250 430 220 Z"
                   fill="hsl(var(--accent))"
-                  fillOpacity="0.15"
+                  fillOpacity="0.2"
                 />
 
-                {/* Regions */}
-                {regions.map((region, index) => (
-                  <g key={region.id}>
-                    <path
-                      d={region.path}
-                      className={`cursor-pointer transition-all duration-300 ${
-                        hoveredRegion === region.id
-                          ? "fill-accent stroke-accent"
-                          : "fill-primary stroke-primary-foreground/20"
-                      }`}
-                      strokeWidth="2"
-                      style={{
-                        transform: hoveredRegion === region.id ? "scale(1.02)" : "scale(1)",
-                        transformOrigin: `${region.labelX}px ${region.labelY}px`,
-                        opacity: isVisible ? 1 : 0,
-                        transition: `opacity 0.5s ease-out ${index * 0.1}s, fill 0.3s, transform 0.3s`,
-                      }}
-                      onMouseEnter={() => setHoveredRegion(region.id)}
-                      onMouseLeave={() => setHoveredRegion(null)}
-                      onMouseMove={(e) => handleMouseMove(e, region)}
-                      role="button"
-                      tabIndex={0}
-                      aria-label={`${region.name} - We service this area`}
-                      onFocus={() => setHoveredRegion(region.id)}
-                      onBlur={() => setHoveredRegion(null)}
-                    />
-                    {/* Region label */}
-                    <text
-                      x={region.labelX}
-                      y={region.labelY}
-                      textAnchor="middle"
-                      className={`text-xs font-medium pointer-events-none transition-all duration-300 ${
-                        hoveredRegion === region.id
-                          ? "fill-accent-foreground"
-                          : "fill-primary-foreground"
-                      }`}
-                      style={{
-                        opacity: isVisible ? 1 : 0,
-                        transition: `opacity 0.5s ease-out ${index * 0.1 + 0.2}s`,
-                      }}
-                    >
-                      {region.name}
-                    </text>
-                  </g>
+                {/* Grid lines for visual interest */}
+                {[100, 200, 300, 400, 500].map((x) => (
+                  <line
+                    key={`v-${x}`}
+                    x1={x}
+                    y1="0"
+                    x2={x}
+                    y2="400"
+                    stroke="hsl(var(--primary))"
+                    strokeOpacity="0.05"
+                    strokeWidth="1"
+                  />
+                ))}
+                {[100, 200, 300].map((y) => (
+                  <line
+                    key={`h-${y}`}
+                    x1="0"
+                    y1={y}
+                    x2="600"
+                    y2={y}
+                    stroke="hsl(var(--primary))"
+                    strokeOpacity="0.05"
+                    strokeWidth="1"
+                  />
                 ))}
 
-                {/* Newcastle pulsing dot (primary hub) */}
-                <g className="pointer-events-none">
-                  <circle
-                    cx="220"
-                    cy="140"
-                    r="8"
-                    className="fill-cta animate-pulse"
-                    style={{
-                      opacity: isVisible ? 1 : 0,
-                      transition: "opacity 0.5s ease-out 0.5s",
-                    }}
-                  />
-                  <circle
-                    cx="220"
-                    cy="140"
-                    r="4"
-                    className="fill-cta-foreground"
-                    style={{
-                      opacity: isVisible ? 1 : 0,
-                      transition: "opacity 0.5s ease-out 0.6s",
-                    }}
-                  />
-                  {/* Pulse rings */}
-                  <circle
-                    cx="220"
-                    cy="140"
-                    r="12"
-                    fill="none"
-                    stroke="hsl(var(--cta))"
-                    strokeWidth="2"
-                    opacity="0.5"
-                    className="animate-ping"
-                    style={{
-                      animationDuration: "2s",
-                    }}
+                {/* Regions */}
+                {regions.map((region, index) => {
+                  const isHovered = hoveredRegion === region.id;
+                  const isNewcastle = region.id === "newcastle";
+
+                  return (
+                    <g key={region.id}>
+                      {/* Shadow/glow effect */}
+                      {isHovered && (
+                        <path
+                          d={region.path}
+                          fill="hsl(var(--accent))"
+                          fillOpacity="0.3"
+                          style={{
+                            transform: "translate(4px, 4px)",
+                            filter: "blur(8px)",
+                          }}
+                        />
+                      )}
+
+                      {/* Main region shape */}
+                      <path
+                        d={region.path}
+                        className="cursor-pointer"
+                        fill={isHovered ? "hsl(var(--accent))" : "hsl(var(--primary))"}
+                        stroke={isHovered ? "hsl(var(--accent))" : "hsl(var(--primary-foreground))"}
+                        strokeWidth={isHovered ? "3" : "2"}
+                        style={{
+                          opacity: isVisible ? 1 : 0,
+                          transform: isHovered ? "scale(1.02)" : "scale(1)",
+                          transformOrigin: `${region.labelX}px ${region.labelY}px`,
+                          transition: `opacity 0.5s ease-out ${index * 0.1}s, fill 0.3s, stroke 0.3s, transform 0.3s, stroke-width 0.3s`,
+                        }}
+                        onMouseEnter={() => setHoveredRegion(region.id)}
+                        onMouseLeave={() => setHoveredRegion(null)}
+                        role="button"
+                        tabIndex={0}
+                        aria-label={`${region.name} - We service this area`}
+                        onFocus={() => setHoveredRegion(region.id)}
+                        onBlur={() => setHoveredRegion(null)}
+                      />
+
+                      {/* Region label */}
+                      <text
+                        x={region.labelX}
+                        y={region.labelY}
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                        className="pointer-events-none font-semibold"
+                        fill={isHovered ? "hsl(var(--accent-foreground))" : "hsl(var(--primary-foreground))"}
+                        fontSize="14"
+                        style={{
+                          opacity: isVisible ? 1 : 0,
+                          transition: `opacity 0.5s ease-out ${index * 0.1 + 0.2}s`,
+                        }}
+                      >
+                        {region.name}
+                      </text>
+
+                      {/* Newcastle hub indicator */}
+                      {isNewcastle && (
+                        <>
+                          {/* Outer pulse ring */}
+                          <circle
+                            cx={region.labelX}
+                            cy={region.labelY + 25}
+                            r="18"
+                            fill="none"
+                            stroke="hsl(var(--cta))"
+                            strokeWidth="2"
+                            className="animate-ping"
+                            style={{
+                              opacity: isVisible ? 0.5 : 0,
+                              animationDuration: "2s",
+                              transition: `opacity 0.5s ease-out 0.5s`,
+                            }}
+                          />
+                          {/* Primary hub dot */}
+                          <circle
+                            cx={region.labelX}
+                            cy={region.labelY + 25}
+                            r="10"
+                            fill="hsl(var(--cta))"
+                            className="animate-pulse"
+                            style={{
+                              opacity: isVisible ? 1 : 0,
+                              transition: `opacity 0.5s ease-out 0.5s`,
+                            }}
+                          />
+                          <circle
+                            cx={region.labelX}
+                            cy={region.labelY + 25}
+                            r="5"
+                            fill="hsl(var(--cta-foreground))"
+                            style={{
+                              opacity: isVisible ? 1 : 0,
+                              transition: `opacity 0.5s ease-out 0.6s`,
+                            }}
+                          />
+                        </>
+                      )}
+                    </g>
+                  );
+                })}
+
+                {/* Compass indicator */}
+                <g transform="translate(50, 350)">
+                  <circle r="20" fill="hsl(var(--primary))" fillOpacity="0.8" />
+                  <text
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                    fill="hsl(var(--primary-foreground))"
+                    fontSize="12"
+                    fontWeight="bold"
+                  >
+                    N
+                  </text>
+                  <path
+                    d="M0 -25 L5 -15 L0 -18 L-5 -15 Z"
+                    fill="hsl(var(--cta))"
                   />
                 </g>
               </svg>
 
-              {/* Tooltip */}
+              {/* Floating tooltip */}
               {hoveredRegion && (
-                <div
-                  className="absolute pointer-events-none bg-card border border-border shadow-lg rounded-lg px-4 py-3 z-10 transition-opacity duration-200"
-                  style={{
-                    left: tooltipPosition.x,
-                    top: tooltipPosition.y,
-                    transform: "translateX(-50%)",
-                  }}
-                >
-                  <p className="font-semibold text-foreground text-sm">
+                <div className="absolute top-4 right-4 bg-card border-2 border-accent shadow-xl rounded-xl px-5 py-4 z-10 animate-fade-in">
+                  <p className="font-bold text-foreground text-lg">
                     {regions.find((r) => r.id === hoveredRegion)?.name}
                   </p>
-                  <div className="flex items-center gap-1.5 text-accent text-xs mt-1">
-                    <CheckCircle className="w-3.5 h-3.5" aria-hidden="true" />
+                  <div className="flex items-center gap-2 text-accent text-sm mt-1">
+                    <CheckCircle className="w-4 h-4" aria-hidden="true" />
                     <span>We Service This Area</span>
                   </div>
                 </div>
@@ -240,32 +271,32 @@ const ServiceAreaMap = () => {
             </div>
 
             {/* Legend */}
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-4 md:gap-8 text-sm">
-              <div className="flex items-center gap-2">
-                <span className="w-4 h-4 rounded bg-primary" aria-hidden="true" />
-                <span className="text-muted-foreground">Service Area</span>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-6 md:gap-10 text-sm">
+              <div className="flex items-center gap-3">
+                <span className="w-6 h-6 rounded-lg bg-primary border-2 border-primary-foreground/20" aria-hidden="true" />
+                <span className="text-foreground font-medium">Service Area</span>
               </div>
-              <div className="flex items-center gap-2">
-                <span className="w-4 h-4 rounded bg-accent" aria-hidden="true" />
-                <span className="text-muted-foreground">Hover to Explore</span>
+              <div className="flex items-center gap-3">
+                <span className="w-6 h-6 rounded-lg bg-accent" aria-hidden="true" />
+                <span className="text-foreground font-medium">Hover to Explore</span>
               </div>
-              <div className="flex items-center gap-2">
-                <span className="w-4 h-4 rounded-full bg-cta animate-pulse" aria-hidden="true" />
-                <span className="text-muted-foreground">Primary Hub</span>
+              <div className="flex items-center gap-3">
+                <span className="w-6 h-6 rounded-full bg-cta animate-pulse" aria-hidden="true" />
+                <span className="text-foreground font-medium">Primary Hub</span>
               </div>
             </div>
           </div>
 
           {/* CTA below map */}
-          <div className="text-center mt-8">
-            <p className="text-muted-foreground mb-4">
+          <div className="text-center mt-10">
+            <p className="text-muted-foreground mb-4 text-lg">
               Don't see your area? Contact us – we may still be able to help!
             </p>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 bg-cta text-cta-foreground px-6 py-3 rounded-lg font-semibold hover:bg-cta/90 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cta focus-visible:ring-offset-2"
+              className="inline-flex items-center gap-2 bg-cta text-cta-foreground px-8 py-4 rounded-xl font-semibold text-lg hover:bg-cta/90 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-cta focus-visible:ring-offset-2 shadow-lg"
             >
-              <MapPin className="w-4 h-4" aria-hidden="true" />
+              <MapPin className="w-5 h-5" aria-hidden="true" />
               Get a Free Quote
             </a>
           </div>
