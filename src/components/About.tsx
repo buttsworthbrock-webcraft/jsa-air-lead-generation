@@ -27,7 +27,7 @@ const About = () => {
             </span>
             <h2 className="font-display text-4xl sm:text-5xl font-extrabold text-foreground leading-tight mb-6">
               Local experts who
-              <span className="text-muted-foreground"> actually care</span>
+              <span className="text-accent"> actually care</span>
             </h2>
             <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
               JSA Airconditioning & Refrigeration is a family-owned business proudly serving 
