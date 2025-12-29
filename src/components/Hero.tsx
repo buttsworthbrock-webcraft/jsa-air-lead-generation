@@ -44,7 +44,7 @@ const Hero = () => {
           </h1>
 
           {/* Description */}
-          <p className="text-lg sm:text-xl text-primary-foreground/70 max-w-md mb-10 leading-relaxed opacity-0 animate-fade-up delay-200">
+          <p className="text-lg sm:text-xl text-primary-foreground/80 max-w-md mb-10 leading-relaxed opacity-0 animate-fade-up delay-200">
             Family-owned air conditioning specialists. Expert installations, 
             repairs, and maintenance you can trust.
           </p>
@@ -72,15 +72,15 @@ const Hero = () => {
           <div className="flex gap-12 opacity-0 animate-fade-up delay-400">
             <div>
               <p className="font-display text-4xl font-extrabold text-primary-foreground">540+</p>
-              <p className="text-sm text-primary-foreground/50">Happy customers</p>
+              <p className="text-sm text-primary-foreground/70">Happy customers</p>
             </div>
             <div>
               <p className="font-display text-4xl font-extrabold text-primary-foreground">10+</p>
-              <p className="text-sm text-primary-foreground/50">Years experience</p>
+              <p className="text-sm text-primary-foreground/70">Years experience</p>
             </div>
             <div>
               <p className="font-display text-4xl font-extrabold text-accent">5.0</p>
-              <p className="text-sm text-primary-foreground/50">Star rating</p>
+              <p className="text-sm text-primary-foreground/70">Star rating</p>
             </div>
           </div>
         </div>
