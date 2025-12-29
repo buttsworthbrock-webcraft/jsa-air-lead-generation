@@ -28,9 +28,9 @@
     --muted: 220 10% 95%;
     --muted-foreground: 220 15% 40%;
 
-    /* Teal accent - fresh, professional */
-    --accent: 175 70% 40%;
-    --accent-foreground: 0 0% 100%;
+    /* Cyan/teal accent - high contrast for dark backgrounds */
+    --accent: 170 80% 55%;
+    --accent-foreground: 220 20% 10%;
 
     /* Coral CTA */
     --cta: 12 80% 55%;
@@ -75,7 +75,7 @@
     --secondary-foreground: 0 0% 95%;
     --muted: 220 15% 15%;
     --muted-foreground: 220 10% 55%;
-    --accent: 175 70% 40%;
+    --accent: 170 80% 55%;
     --accent-foreground: 0 0% 100%;
     --cta: 12 80% 55%;
     --cta-foreground: 0 0% 100%;
