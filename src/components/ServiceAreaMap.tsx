@@ -1,55 +1,7 @@
-import { useState } from "react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
-import { MapPin, CheckCircle } from "lucide-react";
-
-interface Region {
-  id: string;
-  name: string;
-  path: string;
-  labelX: number;
-  labelY: number;
-}
-
-const regions: Region[] = [
-  {
-    id: "newcastle",
-    name: "Newcastle",
-    path: "M320 100 L380 85 L430 95 L445 135 L430 180 L375 195 L320 175 L305 140 Z",
-    labelX: 370,
-    labelY: 140,
-  },
-  {
-    id: "lake-macquarie",
-    name: "Lake Macquarie",
-    path: "M300 175 L375 195 L430 180 L460 230 L450 310 L385 345 L305 320 L265 260 L270 200 Z",
-    labelX: 365,
-    labelY: 265,
-  },
-  {
-    id: "maitland",
-    name: "Maitland",
-    path: "M180 70 L260 55 L320 100 L305 140 L320 175 L270 200 L200 180 L165 145 L155 110 Z",
-    labelX: 235,
-    labelY: 125,
-  },
-  {
-    id: "cessnock",
-    name: "Cessnock",
-    path: "M90 130 L155 110 L165 145 L200 180 L270 200 L265 260 L305 320 L235 355 L135 330 L85 265 L70 195 Z",
-    labelX: 180,
-    labelY: 245,
-  },
-  {
-    id: "port-stephens",
-    name: "Port Stephens",
-    path: "M430 95 L500 70 L550 85 L565 140 L540 185 L475 200 L445 135 Z",
-    labelX: 495,
-    labelY: 135,
-  },
-];
+import { MapPin } from "lucide-react";
 
 const ServiceAreaMap = () => {
-  const [hoveredRegion, setHoveredRegion] = useState<string | null>(null);
   const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
 
   return (
@@ -79,240 +31,222 @@ const ServiceAreaMap = () => {
           </p>
         </div>
 
-        {/* Map Container - Apple Maps Style */}
+        {/* Map Container */}
         <div className="max-w-4xl mx-auto">
-          <div className="bg-[#f5f3f0] rounded-2xl p-4 md:p-6 shadow-lg border border-black/5 overflow-hidden">
+          <div className="bg-[#f0ebe3] rounded-2xl p-4 md:p-6 shadow-xl border border-black/5 overflow-hidden">
             <div className="relative rounded-xl overflow-hidden">
               <svg
-                viewBox="0 0 620 420"
+                viewBox="0 0 700 480"
                 className="w-full h-auto"
                 role="img"
-                aria-label="Interactive map of Newcastle and Hunter Region service areas"
+                aria-label="Map of Newcastle and Hunter Region service areas"
               >
-                {/* Map Background - Light terrain */}
                 <defs>
-                  <linearGradient id="mapBg" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#e8e4df" />
-                    <stop offset="50%" stopColor="#f0ece7" />
-                    <stop offset="100%" stopColor="#e5e1dc" />
+                  {/* Ocean gradient */}
+                  <linearGradient id="oceanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#7dd3fc" />
+                    <stop offset="50%" stopColor="#38bdf8" />
+                    <stop offset="100%" stopColor="#0ea5e9" />
                   </linearGradient>
-                  <linearGradient id="oceanGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#a8d4e6" />
-                    <stop offset="100%" stopColor="#7fc4db" />
+                  {/* Land gradient */}
+                  <linearGradient id="landGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#fef9c3" />
+                    <stop offset="30%" stopColor="#ecfccb" />
+                    <stop offset="70%" stopColor="#dcfce7" />
+                    <stop offset="100%" stopColor="#d1fae5" />
                   </linearGradient>
-                  <linearGradient id="lakeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%" stopColor="#9dd1e5" />
-                    <stop offset="100%" stopColor="#78c0d6" />
+                  {/* Service area fill */}
+                  <linearGradient id="serviceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#22c55e" stopOpacity="0.25" />
+                    <stop offset="100%" stopColor="#16a34a" stopOpacity="0.35" />
                   </linearGradient>
-                  <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
-                    <feDropShadow dx="0" dy="2" stdDeviation="3" floodOpacity="0.15"/>
-                  </filter>
+                  {/* Water body */}
+                  <linearGradient id="lakeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#67e8f9" />
+                    <stop offset="100%" stopColor="#22d3ee" />
+                  </linearGradient>
+                  {/* Pattern for parks/green areas */}
+                  <pattern id="parkPattern" patternUnits="userSpaceOnUse" width="8" height="8">
+                    <circle cx="2" cy="2" r="1" fill="#86efac" opacity="0.5" />
+                    <circle cx="6" cy="6" r="1" fill="#86efac" opacity="0.5" />
+                  </pattern>
                 </defs>
-                
-                {/* Base map background */}
-                <rect x="0" y="0" width="620" height="420" fill="url(#mapBg)" rx="12" />
 
-                {/* Ocean/water area - right side */}
+                {/* Ocean background - full right side */}
+                <rect x="0" y="0" width="700" height="480" fill="url(#oceanGrad)" rx="12" />
+
+                {/* Main landmass */}
                 <path
-                  d="M445 135 Q500 100 570 80 L620 70 L620 420 L520 420 Q495 370 465 320 Q445 270 450 230 L445 135 Z"
-                  fill="url(#oceanGradient)"
+                  d="M0 0 L0 480 L450 480 
+                     Q480 450 490 400 
+                     Q510 340 530 280 
+                     Q550 220 540 160 
+                     Q530 100 490 60 
+                     Q450 20 400 10 
+                     L0 0 Z"
+                  fill="url(#landGrad)"
                 />
-                
-                {/* Lake Macquarie water body */}
-                <ellipse
-                  cx="385"
-                  cy="275"
-                  rx="35"
-                  ry="50"
-                  fill="url(#lakeGradient)"
+
+                {/* Coastal detail/beaches */}
+                <path
+                  d="M490 60 Q510 80 520 110 Q535 150 540 160"
+                  fill="none"
+                  stroke="#fef3c7"
+                  strokeWidth="6"
+                  opacity="0.8"
+                />
+                <path
+                  d="M530 280 Q545 300 550 330 Q555 360 530 400"
+                  fill="none"
+                  stroke="#fef3c7"
+                  strokeWidth="5"
+                  opacity="0.7"
+                />
+
+                {/* Hunter River */}
+                <path
+                  d="M0 140 Q80 145 150 130 Q220 115 280 125 Q340 135 390 120 Q430 108 480 115 Q510 120 535 140"
+                  fill="none"
+                  stroke="#38bdf8"
+                  strokeWidth="8"
+                  strokeLinecap="round"
                   opacity="0.9"
                 />
-
-                {/* Small decorative lakes/rivers */}
+                {/* River tributaries */}
                 <path
-                  d="M160 180 Q175 190 170 210 Q160 220 145 210 Q140 195 160 180"
-                  fill="#9dd1e5"
-                  opacity="0.6"
-                />
-
-                {/* Regions */}
-                {regions.map((region, index) => {
-                  const isHovered = hoveredRegion === region.id;
-                  const isNewcastle = region.id === "newcastle";
-
-                  // Apple Maps style colors
-                  const baseColor = "#d4d0c8";
-                  const hoverColor = "#4ade80";
-                  const strokeColor = isHovered ? "#22c55e" : "#a8a49c";
-
-                  return (
-                    <g key={region.id}>
-                      {/* Region shape with Apple Maps styling */}
-                      <path
-                        d={region.path}
-                        className="cursor-pointer transition-all duration-300"
-                        fill={isHovered ? hoverColor : baseColor}
-                        stroke={strokeColor}
-                        strokeWidth={isHovered ? "2" : "1"}
-                        filter={isHovered ? "url(#softShadow)" : undefined}
-                        style={{
-                          opacity: isVisible ? 1 : 0,
-                          transform: isHovered ? "scale(1.01)" : "scale(1)",
-                          transformOrigin: `${region.labelX}px ${region.labelY}px`,
-                          transition: `opacity 0.5s ease-out ${index * 0.1}s, fill 0.2s, stroke 0.2s, transform 0.2s`,
-                        }}
-                        onMouseEnter={() => setHoveredRegion(region.id)}
-                        onMouseLeave={() => setHoveredRegion(null)}
-                        role="button"
-                        tabIndex={0}
-                        aria-label={`${region.name} - We service this area`}
-                        onFocus={() => setHoveredRegion(region.id)}
-                        onBlur={() => setHoveredRegion(null)}
-                      />
-
-                      {/* Region label - Apple Maps style */}
-                      <text
-                        x={region.labelX}
-                        y={region.labelY}
-                        textAnchor="middle"
-                        dominantBaseline="middle"
-                        className="pointer-events-none select-none"
-                        fill={isHovered ? "#166534" : "#525048"}
-                        fontSize="13"
-                        fontWeight="600"
-                        fontFamily="system-ui, -apple-system, sans-serif"
-                        style={{
-                          opacity: isVisible ? 1 : 0,
-                          transition: `opacity 0.5s ease-out ${index * 0.1 + 0.2}s, fill 0.2s`,
-                        }}
-                      >
-                        {region.name}
-                      </text>
-
-                      {/* Newcastle hub indicator - subtle red pin style */}
-                      {isNewcastle && (
-                        <g style={{
-                          opacity: isVisible ? 1 : 0,
-                          transition: 'opacity 0.5s ease-out 0.5s',
-                        }}>
-                          {/* Pin shadow */}
-                          <ellipse
-                            cx={region.labelX}
-                            cy={region.labelY + 28}
-                            rx="6"
-                            ry="2"
-                            fill="#000"
-                            opacity="0.15"
-                          />
-                          {/* Pin body */}
-                          <path
-                            d={`M${region.labelX} ${region.labelY + 25} 
-                               c-8 0 -12 -6 -12 -12 
-                               c0 -8 12 -16 12 -16 
-                               c0 0 12 8 12 16 
-                               c0 6 -4 12 -12 12`}
-                            fill="#ef4444"
-                            stroke="#dc2626"
-                            strokeWidth="1"
-                          />
-                          {/* Pin inner circle */}
-                          <circle
-                            cx={region.labelX}
-                            cy={region.labelY + 10}
-                            r="4"
-                            fill="#fff"
-                          />
-                        </g>
-                      )}
-                    </g>
-                  );
-                })}
-
-                {/* Decorative road lines */}
-                <path
-                  d="M150 100 Q200 130 240 125 Q300 115 350 140 Q400 165 450 150"
+                  d="M200 130 Q190 170 175 200 Q160 230 140 260"
                   fill="none"
-                  stroke="#fff"
-                  strokeWidth="3"
+                  stroke="#67e8f9"
+                  strokeWidth="4"
+                  strokeLinecap="round"
                   opacity="0.7"
                 />
                 <path
-                  d="M100 200 Q150 230 200 220 Q260 200 320 230 Q380 260 420 240"
+                  d="M300 125 Q290 160 270 190"
                   fill="none"
-                  stroke="#fff"
-                  strokeWidth="2"
+                  stroke="#67e8f9"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  opacity="0.6"
+                />
+
+                {/* Lake Macquarie */}
+                <ellipse
+                  cx="420"
+                  cy="300"
+                  rx="50"
+                  ry="80"
+                  fill="url(#lakeGrad)"
+                />
+                {/* Lake detail */}
+                <ellipse
+                  cx="415"
+                  cy="290"
+                  rx="35"
+                  ry="55"
+                  fill="#22d3ee"
                   opacity="0.5"
                 />
 
-                {/* Compass - Apple style */}
-                <g transform="translate(45, 380)">
-                  <circle r="18" fill="#fff" stroke="#d1d5db" strokeWidth="1" />
-                  <path
-                    d="M0 -12 L3 -4 L0 -6 L-3 -4 Z"
-                    fill="#ef4444"
-                  />
-                  <path
-                    d="M0 12 L3 4 L0 6 L-3 4 Z"
-                    fill="#9ca3af"
-                  />
-                  <text
-                    y="-5"
-                    textAnchor="middle"
-                    dominantBaseline="middle"
-                    fill="#374151"
-                    fontSize="8"
-                    fontWeight="600"
-                  >
-                    N
-                  </text>
+                {/* Green park areas */}
+                <ellipse cx="100" cy="320" rx="40" ry="30" fill="url(#parkPattern)" opacity="0.6" />
+                <ellipse cx="200" cy="380" rx="35" ry="25" fill="url(#parkPattern)" opacity="0.5" />
+                <ellipse cx="320" cy="420" rx="45" ry="30" fill="url(#parkPattern)" opacity="0.5" />
+
+                {/* Service Area Boundary */}
+                <path
+                  d="M40 80 
+                     Q120 50 220 55 
+                     Q320 60 420 80 
+                     Q480 100 510 150 
+                     Q535 200 530 280 
+                     Q525 360 490 420 
+                     Q450 470 350 470 
+                     Q250 470 150 450 
+                     Q80 430 50 380 
+                     Q30 330 35 260 
+                     Q30 180 40 80 Z"
+                  fill="url(#serviceGrad)"
+                  stroke="#16a34a"
+                  strokeWidth="3"
+                  strokeDasharray="12 6"
+                  opacity="0.9"
+                />
+
+                {/* Major roads */}
+                <g stroke="#f5f5f4" strokeWidth="4" strokeLinecap="round" opacity="0.9">
+                  {/* Pacific Highway */}
+                  <path d="M300 0 Q320 80 340 150 Q360 220 380 280 Q400 340 420 400 Q440 450 450 480" />
+                  {/* New England Highway */}
+                  <path d="M0 200 Q100 180 180 160 Q260 140 340 150" />
+                  {/* Hunter Expressway */}
+                  <path d="M80 100 Q150 120 200 140 Q250 155 300 150" />
+                </g>
+                {/* Road outlines */}
+                <g stroke="#d4d4d4" strokeWidth="1.5" strokeLinecap="round" fill="none" opacity="0.6">
+                  <path d="M300 0 Q320 80 340 150 Q360 220 380 280 Q400 340 420 400 Q440 450 450 480" />
+                  <path d="M0 200 Q100 180 180 160 Q260 140 340 150" />
+                  <path d="M80 100 Q150 120 200 140 Q250 155 300 150" />
                 </g>
 
-                {/* Scale indicator */}
-                <g transform="translate(520, 395)">
-                  <line x1="0" y1="0" x2="60" y2="0" stroke="#6b7280" strokeWidth="1" />
-                  <line x1="0" y1="-4" x2="0" y2="4" stroke="#6b7280" strokeWidth="1" />
-                  <line x1="60" y1="-4" x2="60" y2="4" stroke="#6b7280" strokeWidth="1" />
-                  <text
-                    x="30"
-                    y="12"
-                    textAnchor="middle"
-                    fill="#6b7280"
-                    fontSize="9"
-                    fontFamily="system-ui, -apple-system, sans-serif"
-                  >
-                    ~20 km
-                  </text>
+                {/* City/Town markers */}
+                {/* Newcastle - main hub */}
+                <g transform="translate(450, 160)">
+                  <circle r="12" fill="#ef4444" stroke="#fff" strokeWidth="3" />
+                  <circle r="5" fill="#fff" />
+                  <text x="20" y="5" fill="#1f2937" fontSize="16" fontWeight="700" fontFamily="system-ui">Newcastle</text>
+                </g>
+
+                {/* Lake Macquarie */}
+                <g transform="translate(380, 380)">
+                  <circle r="8" fill="#3b82f6" stroke="#fff" strokeWidth="2" />
+                  <text x="15" y="4" fill="#374151" fontSize="13" fontWeight="600" fontFamily="system-ui">Lake Macquarie</text>
+                </g>
+
+                {/* Maitland */}
+                <g transform="translate(280, 120)">
+                  <circle r="8" fill="#3b82f6" stroke="#fff" strokeWidth="2" />
+                  <text x="15" y="4" fill="#374151" fontSize="13" fontWeight="600" fontFamily="system-ui">Maitland</text>
+                </g>
+
+                {/* Cessnock */}
+                <g transform="translate(160, 220)">
+                  <circle r="7" fill="#3b82f6" stroke="#fff" strokeWidth="2" />
+                  <text x="12" y="4" fill="#374151" fontSize="12" fontWeight="600" fontFamily="system-ui">Cessnock</text>
+                </g>
+
+                {/* Port Stephens */}
+                <g transform="translate(500, 90)">
+                  <circle r="7" fill="#3b82f6" stroke="#fff" strokeWidth="2" />
+                  <text x="-75" y="4" fill="#374151" fontSize="12" fontWeight="600" fontFamily="system-ui">Port Stephens</text>
+                </g>
+
+                {/* Compass */}
+                <g transform="translate(640, 440)">
+                  <circle r="22" fill="#fff" stroke="#e5e7eb" strokeWidth="2" />
+                  <polygon points="0,-15 4,-5 0,-8 -4,-5" fill="#ef4444" />
+                  <polygon points="0,15 4,5 0,8 -4,5" fill="#9ca3af" />
+                  <text y="-6" textAnchor="middle" fill="#374151" fontSize="9" fontWeight="700">N</text>
+                </g>
+
+                {/* Scale bar */}
+                <g transform="translate(40, 450)">
+                  <rect x="0" y="0" width="80" height="8" fill="#fff" stroke="#d1d5db" strokeWidth="1" rx="2" />
+                  <rect x="0" y="0" width="40" height="8" fill="#374151" rx="2" />
+                  <text x="40" y="22" textAnchor="middle" fill="#6b7280" fontSize="11" fontFamily="system-ui">20 km</text>
+                </g>
+
+                {/* Legend */}
+                <g transform="translate(40, 30)">
+                  <rect x="-10" y="-10" width="140" height="70" fill="#fff" fillOpacity="0.95" rx="8" stroke="#e5e7eb" />
+                  <circle cx="8" cy="10" r="6" fill="#ef4444" stroke="#fff" strokeWidth="2" />
+                  <text x="22" y="14" fill="#374151" fontSize="11" fontFamily="system-ui">Headquarters</text>
+                  <circle cx="8" cy="32" r="5" fill="#3b82f6" stroke="#fff" strokeWidth="2" />
+                  <text x="22" y="36" fill="#374151" fontSize="11" fontFamily="system-ui">Service Areas</text>
+                  <line x1="2" y1="52" x2="14" y2="52" stroke="#16a34a" strokeWidth="2" strokeDasharray="4 2" />
+                  <text x="22" y="56" fill="#374151" fontSize="11" fontFamily="system-ui">Coverage Zone</text>
                 </g>
               </svg>
-
-              {/* Floating tooltip - Apple style */}
-              {hoveredRegion && (
-                <div className="absolute top-3 right-3 bg-white/95 backdrop-blur-sm shadow-lg rounded-xl px-4 py-3 z-10 animate-fade-in border border-black/5">
-                  <p className="font-semibold text-gray-900 text-base">
-                    {regions.find((r) => r.id === hoveredRegion)?.name}
-                  </p>
-                  <div className="flex items-center gap-1.5 text-green-600 text-sm mt-0.5">
-                    <CheckCircle className="w-3.5 h-3.5" aria-hidden="true" />
-                    <span>We service this area</span>
-                  </div>
-                </div>
-              )}
-            </div>
-
-            {/* Legend - minimal Apple style */}
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-6 text-xs text-gray-500">
-              <div className="flex items-center gap-2">
-                <span className="w-4 h-4 rounded bg-[#d4d0c8] border border-[#a8a49c]" aria-hidden="true" />
-                <span>Service Area</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-4 h-4 rounded bg-green-400 border border-green-500" aria-hidden="true" />
-                <span>Hover to explore</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-3 h-4 rounded-t-full bg-red-500" aria-hidden="true" />
-                <span>Headquarters</span>
-              </div>
             </div>
           </div>
 
