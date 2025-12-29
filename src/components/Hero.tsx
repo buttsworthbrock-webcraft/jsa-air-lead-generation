@@ -61,9 +61,10 @@ const Hero = () => {
             </Button>
             <a
               href="tel:0447881898"
-              className="flex items-center gap-3 px-6 py-4 text-primary-foreground hover:text-accent transition-colors"
+              aria-label="Call us at 0447 881 898"
+              className="flex items-center gap-3 px-6 py-4 text-primary-foreground hover:text-accent transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-lg"
             >
-              <Phone className="w-5 h-5" />
+              <Phone className="w-5 h-5" aria-hidden="true" />
               <span className="font-semibold">0447 881 898</span>
             </a>
           </div>
@@ -89,10 +90,11 @@ const Hero = () => {
       {/* Scroll Indicator */}
       <button 
         onClick={scrollToServices}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-primary-foreground/50 hover:text-primary-foreground transition-colors group"
+        aria-label="Scroll to services section"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-primary-foreground/60 hover:text-primary-foreground transition-colors group focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded-lg p-2"
       >
         <span className="text-xs uppercase tracking-widest">Scroll</span>
-        <ArrowDown className="w-4 h-4 animate-bounce" />
+        <ArrowDown className="w-4 h-4 animate-bounce" aria-hidden="true" />
       </button>
 
       {/* Decorative Corner */}

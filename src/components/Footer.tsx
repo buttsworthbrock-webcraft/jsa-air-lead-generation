@@ -1,6 +1,7 @@
+import { forwardRef } from "react";
 import { Phone, Mail, MapPin } from "lucide-react";
 
-const Footer = () => {
+const Footer = forwardRef<HTMLElement>((_, ref) => {
   const currentYear = new Date().getFullYear();
 
   const scrollToSection = (id: string) => {
@@ -8,7 +9,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-primary text-primary-foreground py-16">
+    <footer ref={ref} className="bg-primary text-primary-foreground py-16" role="contentinfo">
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
@@ -31,7 +32,7 @@ const Footer = () => {
                 <li key={item}>
                   <button
                     onClick={() => scrollToSection(item.toLowerCase())}
-                    className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors"
+                    className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
                   >
                     {item}
                   </button>
@@ -43,7 +44,7 @@ const Footer = () => {
           {/* Services */}
           <div>
             <h4 className="font-semibold mb-4 text-sm">Services</h4>
-            <ul className="space-y-2 text-sm text-primary-foreground/60">
+            <ul className="space-y-2 text-sm text-primary-foreground/70">
               <li>Split Systems</li>
               <li>Ducted AC</li>
               <li>Repairs</li>
@@ -56,20 +57,20 @@ const Footer = () => {
             <h4 className="font-semibold mb-4 text-sm">Contact</h4>
             <ul className="space-y-3">
               <li>
-                <a href="tel:0447881898" className="flex items-center gap-2 text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
-                  <Phone className="w-4 h-4" />
+                <a href="tel:0447881898" aria-label="Call us at 0447 881 898" className="flex items-center gap-2 text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded">
+                  <Phone className="w-4 h-4" aria-hidden="true" />
                   0447 881 898
                 </a>
               </li>
               <li>
-                <a href="mailto:info@jsaairconditioning.com.au" className="flex items-center gap-2 text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
-                  <Mail className="w-4 h-4" />
+                <a href="mailto:info@jsaairconditioning.com.au" aria-label="Email us at info@jsaairconditioning.com.au" className="flex items-center gap-2 text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded">
+                  <Mail className="w-4 h-4" aria-hidden="true" />
                   Email Us
                 </a>
               </li>
               <li>
-                <span className="flex items-center gap-2 text-sm text-primary-foreground/60">
-                  <MapPin className="w-4 h-4" />
+                <span className="flex items-center gap-2 text-sm text-primary-foreground/70">
+                  <MapPin className="w-4 h-4" aria-hidden="true" />
                   Newcastle & Hunter
                 </span>
               </li>
@@ -84,6 +85,8 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
+});
+
+Footer.displayName = "Footer";
 
 export default Footer;
