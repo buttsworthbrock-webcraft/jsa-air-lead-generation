@@ -100,58 +100,82 @@ const ContactForm = () => {
               <h3 className="font-display text-xl font-bold text-foreground mb-1">Request a Quote</h3>
               <p className="text-sm text-muted-foreground mb-8">Free, no-obligation estimate</p>
 
-              <form onSubmit={handleSubmit} className="space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-5" aria-label="Quote request form">
                 <div className="grid sm:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="name" className="sr-only">Your name</label>
+                    <Input
+                      id="name"
+                      type="text"
+                      name="name"
+                      placeholder="Your name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      aria-required="true"
+                      className="h-12 rounded-xl"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="phone" className="sr-only">Phone number</label>
+                    <Input
+                      id="phone"
+                      type="tel"
+                      name="phone"
+                      placeholder="Phone number"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      required
+                      aria-required="true"
+                      className="h-12 rounded-xl"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label htmlFor="email" className="sr-only">Email address</label>
                   <Input
-                    type="text"
-                    name="name"
-                    placeholder="Your name"
-                    value={formData.name}
+                    id="email"
+                    type="email"
+                    name="email"
+                    placeholder="Email address"
+                    value={formData.email}
                     onChange={handleChange}
                     required
-                    className="h-12 rounded-xl"
-                  />
-                  <Input
-                    type="tel"
-                    name="phone"
-                    placeholder="Phone number"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
+                    aria-required="true"
                     className="h-12 rounded-xl"
                   />
                 </div>
-                <Input
-                  type="email"
-                  name="email"
-                  placeholder="Email address"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="h-12 rounded-xl"
-                />
-                <select
-                  name="service"
-                  value={formData.service}
-                  onChange={handleChange}
-                  required
-                  className="w-full h-12 rounded-xl border border-input bg-background px-4 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
-                >
-                  <option value="">What do you need?</option>
-                  <option value="split">Split System Installation</option>
-                  <option value="ducted">Ducted AC Installation</option>
-                  <option value="repair">Repair / Service</option>
-                  <option value="maintenance">Maintenance</option>
-                  <option value="other">Other</option>
-                </select>
-                <Textarea
-                  name="message"
-                  placeholder="Tell us about your project..."
-                  value={formData.message}
-                  onChange={handleChange}
-                  rows={4}
-                  className="rounded-xl resize-none"
-                />
+                <div>
+                  <label htmlFor="service" className="sr-only">Service type</label>
+                  <select
+                    id="service"
+                    name="service"
+                    value={formData.service}
+                    onChange={handleChange}
+                    required
+                    aria-required="true"
+                    className="w-full h-12 rounded-xl border border-input bg-background px-4 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                  >
+                    <option value="">What do you need?</option>
+                    <option value="split">Split System Installation</option>
+                    <option value="ducted">Ducted AC Installation</option>
+                    <option value="repair">Repair / Service</option>
+                    <option value="maintenance">Maintenance</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="message" className="sr-only">Project details</label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    placeholder="Tell us about your project..."
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows={4}
+                    className="rounded-xl resize-none"
+                  />
+                </div>
                 <Button type="submit" variant="cta" size="lg" className="w-full" disabled={isSubmitting}>
                   {isSubmitting ? "Sending..." : "Send Request"}
                   <Send className="w-4 h-4" />
