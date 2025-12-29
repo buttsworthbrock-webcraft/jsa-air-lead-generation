@@ -24,9 +24,9 @@
     --secondary: 40 30% 96%;
     --secondary-foreground: 220 20% 10%;
 
-    /* Subtle muted */
+    /* Subtle muted - improved contrast */
     --muted: 220 10% 95%;
-    --muted-foreground: 220 10% 45%;
+    --muted-foreground: 220 15% 40%;
 
     /* Teal accent - fresh, professional */
     --accent: 175 70% 40%;

@@ -18,7 +18,7 @@ const Footer = () => {
                 JSA
               </div>
             </div>
-            <p className="text-primary-foreground/60 text-sm leading-relaxed">
+            <p className="text-primary-foreground/70 text-sm leading-relaxed">
               Family-owned HVAC specialists serving Newcastle and the Hunter Region.
             </p>
           </div>
