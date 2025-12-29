@@ -62,12 +62,12 @@ const About = () => {
             </div>
 
             {/* Small Stats */}
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {stats.map((stat) => (
-                <div key={stat.value} className="bg-muted rounded-2xl p-6 text-center">
-                  <stat.icon className="w-6 h-6 text-accent mx-auto mb-3" />
-                  <p className="font-display font-bold text-foreground">{stat.value}</p>
-                  <p className="text-xs text-muted-foreground">{stat.label}</p>
+                <div key={stat.value} className="bg-muted rounded-2xl p-4 sm:p-6 text-center">
+                  <stat.icon className="w-5 h-5 sm:w-6 sm:h-6 text-accent mx-auto mb-2 sm:mb-3" />
+                  <p className="font-display font-bold text-sm sm:text-base text-foreground">{stat.value}</p>
+                  <p className="text-xs text-muted-foreground leading-tight">{stat.label}</p>
                 </div>
               ))}
             </div>
