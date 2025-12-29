@@ -3,6 +3,7 @@ import serviceSplit from "@/assets/service-split.jpg";
 import serviceDucted from "@/assets/service-ducted.jpg";
 import serviceRepair from "@/assets/service-repair.jpg";
 import serviceMaintenance from "@/assets/service-maintenance.jpg";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const services = [
   {
@@ -32,9 +33,15 @@ const services = [
 ];
 
 const Services = () => {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+
   return (
-    <section id="services" className="py-28 bg-background">
-      <div className="container mx-auto px-6">
+    <section 
+      id="services" 
+      ref={ref as React.RefObject<HTMLElement>}
+      className="py-28 bg-background"
+    >
+      <div className={`container mx-auto px-6 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-16">
           <div className="max-w-xl">
