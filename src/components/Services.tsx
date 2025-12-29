@@ -39,7 +39,7 @@ const Services = () => {
             </span>
             <h2 className="font-display text-4xl sm:text-5xl font-extrabold text-foreground leading-tight">
               Everything you need for
-              <span className="text-muted-foreground"> perfect comfort</span>
+              <span className="text-accent"> perfect comfort</span>
             </h2>
           </div>
           <p className="text-muted-foreground max-w-md lg:text-right">

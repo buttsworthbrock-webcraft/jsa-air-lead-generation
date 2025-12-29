@@ -35,7 +35,7 @@ const Testimonials = () => {
           </span>
           <h2 className="font-display text-4xl sm:text-5xl font-extrabold text-foreground leading-tight mb-4">
             Trusted by 540+
-            <span className="text-muted-foreground"> local customers</span>
+            <span className="text-accent"> local customers</span>
           </h2>
         </div>
 
