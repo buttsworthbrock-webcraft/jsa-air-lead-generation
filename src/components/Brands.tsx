@@ -1,3 +1,5 @@
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+
 const brands = [
   { name: "Mitsubishi Electric", logo: "https://jsaairconditioning.com.au/wp-content/uploads/2025/08/Mitsubishi-1-e1755908545601.png" },
   { name: "ActronAir", logo: "https://jsaairconditioning.com.au/wp-content/uploads/2025/08/Action-Air-1.webp" },
@@ -6,8 +8,14 @@ const brands = [
 ];
 
 const Brands = () => {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.2 });
+
   return (
-    <section className="py-16 bg-muted/50 border-y border-border">
+    <section 
+      ref={ref as React.RefObject<HTMLElement>}
+      className="py-16 bg-muted/50 border-y border-border"
+    >
+      <div className={`container mx-auto px-6 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
       <div className="container mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
@@ -27,6 +35,7 @@ const Brands = () => {
               </div>
             ))}
           </div>
+        </div>
         </div>
       </div>
     </section>

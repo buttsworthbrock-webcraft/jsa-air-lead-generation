@@ -1,4 +1,5 @@
 import { Check, MapPin, Clock, Shield } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const features = [
   "Family owned & operated",
@@ -16,9 +17,15 @@ const stats = [
 ];
 
 const About = () => {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+
   return (
-    <section id="about" className="py-28 bg-background">
-      <div className="container mx-auto px-6">
+    <section 
+      id="about" 
+      ref={ref as React.RefObject<HTMLElement>}
+      className="py-28 bg-background"
+    >
+      <div className={`container mx-auto px-6 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Content */}
           <div>

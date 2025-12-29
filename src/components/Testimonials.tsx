@@ -1,4 +1,5 @@
-import { Star, Quote } from "lucide-react";
+import { Star } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const testimonials = [
   {
@@ -25,9 +26,14 @@ const testimonials = [
 ];
 
 const Testimonials = () => {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+
   return (
-    <section className="py-28 bg-secondary">
-      <div className="container mx-auto px-6">
+    <section 
+      ref={ref as React.RefObject<HTMLElement>}
+      className="py-28 bg-secondary"
+    >
+      <div className={`container mx-auto px-6 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="text-accent font-semibold text-sm uppercase tracking-wider mb-3 block">

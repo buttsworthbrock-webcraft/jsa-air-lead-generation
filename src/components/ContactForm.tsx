@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Phone, Mail, MapPin, Send, ArrowRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -34,9 +35,15 @@ const ContactForm = () => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
+
   return (
-    <section id="contact" className="py-28 bg-muted/30">
-      <div className="container mx-auto px-6">
+    <section 
+      id="contact" 
+      ref={ref as React.RefObject<HTMLElement>}
+      className="py-28 bg-muted/30"
+    >
+      <div className={`container mx-auto px-6 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
         <div className="grid lg:grid-cols-5 gap-16">
           {/* Left Content */}
           <div className="lg:col-span-2">
