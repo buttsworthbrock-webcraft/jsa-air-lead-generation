@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Phone, ArrowRight, Check } from "lucide-react";
+import { Phone, ArrowDown } from "lucide-react";
 import heroImage from "@/assets/hero-ac.jpg";
 
 const Hero = () => {
@@ -7,95 +7,96 @@ const Hero = () => {
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
   };
 
+  const scrollToServices = () => {
+    document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <section id="home" className="min-h-screen relative overflow-hidden bg-secondary">
-      <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-2 min-h-screen items-center gap-8 lg:gap-16">
-          {/* Left Content */}
-          <div className="pt-32 pb-12 lg:py-32 order-2 lg:order-1">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-background rounded-full px-4 py-2 shadow-sm mb-8 opacity-0 animate-fade-up">
-              <span className="w-2 h-2 rounded-full bg-accent" />
-              <span className="text-sm font-medium text-foreground">Newcastle's Trusted HVAC Experts</span>
-            </div>
+    <section id="home" className="relative min-h-screen bg-primary overflow-hidden">
+      {/* Background Image - Right Side */}
+      <div className="absolute top-0 right-0 w-full lg:w-1/2 h-full">
+        <img
+          src={heroImage}
+          alt="Professional air conditioning installation"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-primary/40 lg:bg-gradient-to-r lg:from-primary lg:via-primary/80 lg:to-transparent" />
+      </div>
 
-            {/* Headline */}
-            <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold text-foreground leading-[0.95] mb-6 opacity-0 animate-fade-up delay-100">
-              Perfect
-              <br />
-              Climate,
-              <br />
-              <span className="text-accent">Every Room.</span>
-            </h1>
-
-            {/* Subheadline */}
-            <p className="text-lg text-muted-foreground max-w-md mb-8 leading-relaxed opacity-0 animate-fade-up delay-200">
-              Family-owned specialists delivering premium air conditioning and 
-              refrigeration solutions across Newcastle and the Hunter Region.
-            </p>
-
-            {/* CTAs */}
-            <div className="flex flex-wrap gap-4 mb-12 opacity-0 animate-fade-up delay-300">
-              <Button variant="hero" size="xl" onClick={scrollToContact}>
-                Request Free Quote
-                <ArrowRight className="w-5 h-5" />
-              </Button>
-              <Button variant="heroOutline" size="xl" onClick={() => window.location.href = "tel:0447881898"}>
-                <Phone className="w-5 h-5" />
-                Call Now
-              </Button>
-            </div>
-
-            {/* Trust Points */}
-            <div className="flex flex-wrap gap-x-8 gap-y-3 opacity-0 animate-fade-up delay-400">
-              {["540+ Happy Customers", "Same Week Service", "All Major Brands"].map((point) => (
-                <div key={point} className="flex items-center gap-2">
-                  <div className="w-5 h-5 rounded-full bg-accent/10 flex items-center justify-center">
-                    <Check className="w-3 h-3 text-accent" />
-                  </div>
-                  <span className="text-sm font-medium text-foreground">{point}</span>
-                </div>
-              ))}
-            </div>
+      {/* Content */}
+      <div className="relative z-10 container mx-auto px-6 min-h-screen flex flex-col justify-center">
+        <div className="max-w-2xl pt-32 pb-20">
+          {/* Eyebrow */}
+          <div className="flex items-center gap-3 mb-8 opacity-0 animate-fade-up">
+            <div className="h-px w-12 bg-accent" />
+            <span className="text-accent font-medium text-sm uppercase tracking-widest">
+              Newcastle & Hunter Region
+            </span>
           </div>
 
-          {/* Right Image */}
-          <div className="relative order-1 lg:order-2 pt-24 lg:pt-0">
-            <div className="relative opacity-0 animate-scale-in delay-200">
-              {/* Main Image */}
-              <div className="relative rounded-3xl overflow-hidden shadow-lg">
-                <img
-                  src={heroImage}
-                  alt="Professional air conditioning installation"
-                  className="w-full aspect-[4/5] lg:aspect-[3/4] object-cover"
-                />
-                {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
-              </div>
+          {/* Main Headline */}
+          <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold text-primary-foreground leading-[0.9] tracking-tight mb-8 opacity-0 animate-fade-up delay-100">
+            Your home,
+            <br />
+            <span className="text-accent">perfectly</span>
+            <br />
+            cooled.
+          </h1>
 
-              {/* Floating Card */}
-              <div className="absolute -bottom-6 -left-6 bg-background rounded-2xl p-5 shadow-lg opacity-0 animate-slide-in delay-500">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center">
-                    <span className="text-2xl font-display font-bold text-accent">10+</span>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground">Years Experience</p>
-                    <p className="text-sm text-muted-foreground">Trusted local experts</p>
-                  </div>
-                </div>
-              </div>
+          {/* Description */}
+          <p className="text-lg sm:text-xl text-primary-foreground/70 max-w-md mb-10 leading-relaxed opacity-0 animate-fade-up delay-200">
+            Family-owned air conditioning specialists. Expert installations, 
+            repairs, and maintenance you can trust.
+          </p>
 
-              {/* Decorative Elements */}
-              <div className="absolute -top-4 -right-4 w-24 h-24 rounded-full border-4 border-accent/20" />
-              <div className="absolute top-1/2 -right-8 w-16 h-16 rounded-full bg-cta/10 animate-float" />
+          {/* CTAs */}
+          <div className="flex flex-wrap items-center gap-4 mb-16 opacity-0 animate-fade-up delay-300">
+            <Button 
+              variant="cta" 
+              size="xl" 
+              onClick={scrollToContact}
+              className="text-base"
+            >
+              Get Free Quote
+            </Button>
+            <a
+              href="tel:0447881898"
+              className="flex items-center gap-3 px-6 py-4 text-primary-foreground hover:text-accent transition-colors"
+            >
+              <Phone className="w-5 h-5" />
+              <span className="font-semibold">0447 881 898</span>
+            </a>
+          </div>
+
+          {/* Stats Row */}
+          <div className="flex gap-12 opacity-0 animate-fade-up delay-400">
+            <div>
+              <p className="font-display text-4xl font-extrabold text-primary-foreground">540+</p>
+              <p className="text-sm text-primary-foreground/50">Happy customers</p>
+            </div>
+            <div>
+              <p className="font-display text-4xl font-extrabold text-primary-foreground">10+</p>
+              <p className="text-sm text-primary-foreground/50">Years experience</p>
+            </div>
+            <div>
+              <p className="font-display text-4xl font-extrabold text-accent">5.0</p>
+              <p className="text-sm text-primary-foreground/50">Star rating</p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom Accent Line */}
-      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-accent to-transparent opacity-30" />
+      {/* Scroll Indicator */}
+      <button 
+        onClick={scrollToServices}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-primary-foreground/50 hover:text-primary-foreground transition-colors group"
+      >
+        <span className="text-xs uppercase tracking-widest">Scroll</span>
+        <ArrowDown className="w-4 h-4 animate-bounce" />
+      </button>
+
+      {/* Decorative Corner */}
+      <div className="absolute bottom-0 left-0 w-32 h-32 border-l-2 border-b-2 border-accent/30" />
     </section>
   );
 };
