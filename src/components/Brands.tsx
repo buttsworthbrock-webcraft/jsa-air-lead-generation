@@ -7,27 +7,29 @@ const brands = [
 
 const Brands = () => {
   return (
-    <section className="py-16 bg-card border-y border-border">
+    <section className="py-20 bg-background relative">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <span className="inline-block text-muted-foreground font-medium text-sm uppercase tracking-wider">
-            Trusted Brands We Install & Service
-          </span>
-        </div>
+        <div className="glass rounded-3xl p-10 sm:p-14">
+          <div className="text-center mb-10">
+            <p className="text-muted-foreground font-medium">
+              Authorised installers for Australia's leading brands
+            </p>
+          </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-8 md:gap-16">
-          {brands.map((brand) => (
-            <div
-              key={brand.name}
-              className="grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300"
-            >
-              <img
-                src={brand.logo}
-                alt={brand.name}
-                className="h-10 md:h-14 w-auto object-contain"
-              />
-            </div>
-          ))}
+          <div className="flex flex-wrap items-center justify-center gap-10 md:gap-16">
+            {brands.map((brand) => (
+              <div
+                key={brand.name}
+                className="grayscale hover:grayscale-0 opacity-50 hover:opacity-100 transition-all duration-500 hover:scale-110"
+              >
+                <img
+                  src={brand.logo}
+                  alt={brand.name}
+                  className="h-8 md:h-12 w-auto object-contain"
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
