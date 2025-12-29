@@ -45,7 +45,7 @@ const ContactForm = () => {
             </span>
             <h2 className="font-display text-4xl sm:text-5xl font-extrabold text-foreground leading-tight mb-6">
               Let's discuss
-              <span className="text-muted-foreground"> your project</span>
+              <span className="text-accent"> your project</span>
             </h2>
             <p className="text-muted-foreground mb-10 leading-relaxed">
               Ready for a quote, repair, or just some honest advice? 
