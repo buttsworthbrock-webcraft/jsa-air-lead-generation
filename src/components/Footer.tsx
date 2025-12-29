@@ -1,5 +1,5 @@
 import { forwardRef } from "react";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, Facebook, Instagram } from "lucide-react";
 
 const Footer = forwardRef<HTMLElement>((_, ref) => {
   const currentYear = new Date().getFullYear();
@@ -19,9 +19,30 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
                 JSA
               </div>
             </div>
-            <p className="text-primary-foreground/70 text-sm leading-relaxed">
+            <p className="text-primary-foreground/70 text-sm leading-relaxed mb-4">
               Family-owned HVAC specialists serving Newcastle and the Hunter Region.
             </p>
+            {/* Social Links */}
+            <div className="flex items-center gap-3">
+              <a
+                href="https://facebook.com/jsaairconditioning"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on Facebook"
+                className="w-9 h-9 rounded-lg bg-primary-foreground/10 flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              >
+                <Facebook className="w-4 h-4" aria-hidden="true" />
+              </a>
+              <a
+                href="https://instagram.com/jsaairconditioning"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Follow us on Instagram"
+                className="w-9 h-9 rounded-lg bg-primary-foreground/10 flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+              >
+                <Instagram className="w-4 h-4" aria-hidden="true" />
+              </a>
+            </div>
           </div>
 
           {/* Links */}
