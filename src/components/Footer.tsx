@@ -8,41 +8,30 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-primary text-primary-foreground py-16 relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-accent/10 rounded-full blur-[150px]" />
-
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid md:grid-cols-12 gap-12 mb-12">
+    <footer className="bg-primary text-primary-foreground py-16">
+      <div className="container mx-auto px-6">
+        <div className="grid md:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
-          <div className="md:col-span-4">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="relative w-12 h-12">
-                <div className="absolute inset-0 rounded-2xl bg-accent/20 rotate-6" />
-                <div className="absolute inset-0 rounded-2xl bg-primary-foreground/10 flex items-center justify-center font-display font-bold">
-                  JSA
-                </div>
-              </div>
-              <div>
-                <p className="font-display font-semibold">Airconditioning</p>
-                <p className="text-sm text-primary-foreground/50">& Refrigeration</p>
+          <div className="md:col-span-1">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded-lg bg-primary-foreground/10 flex items-center justify-center font-display font-bold text-sm">
+                JSA
               </div>
             </div>
-            <p className="text-primary-foreground/60 leading-relaxed max-w-sm">
-              Family-owned business proudly serving Newcastle and the Hunter Region 
-              with quality climate control solutions.
+            <p className="text-primary-foreground/60 text-sm leading-relaxed">
+              Family-owned HVAC specialists serving Newcastle and the Hunter Region.
             </p>
           </div>
 
-          {/* Quick Links */}
-          <div className="md:col-span-2">
-            <h4 className="font-display font-semibold mb-5">Links</h4>
-            <ul className="space-y-3">
+          {/* Links */}
+          <div>
+            <h4 className="font-semibold mb-4 text-sm">Navigation</h4>
+            <ul className="space-y-2">
               {["Home", "Services", "About", "Contact"].map((item) => (
                 <li key={item}>
-                  <button 
+                  <button
                     onClick={() => scrollToSection(item.toLowerCase())}
-                    className="text-primary-foreground/60 hover:text-primary-foreground transition-colors"
+                    className="text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors"
                   >
                     {item}
                   </button>
@@ -52,34 +41,34 @@ const Footer = () => {
           </div>
 
           {/* Services */}
-          <div className="md:col-span-3">
-            <h4 className="font-display font-semibold mb-5">Services</h4>
-            <ul className="space-y-3 text-primary-foreground/60">
-              <li>Split System Installation</li>
-              <li>Ducted Air Systems</li>
-              <li>Service & Repairs</li>
+          <div>
+            <h4 className="font-semibold mb-4 text-sm">Services</h4>
+            <ul className="space-y-2 text-sm text-primary-foreground/60">
+              <li>Split Systems</li>
+              <li>Ducted AC</li>
+              <li>Repairs</li>
               <li>Maintenance</li>
             </ul>
           </div>
 
           {/* Contact */}
-          <div className="md:col-span-3">
-            <h4 className="font-display font-semibold mb-5">Contact</h4>
-            <ul className="space-y-4">
+          <div>
+            <h4 className="font-semibold mb-4 text-sm">Contact</h4>
+            <ul className="space-y-3">
               <li>
-                <a href="tel:0447881898" className="flex items-center gap-3 text-primary-foreground/60 hover:text-primary-foreground transition-colors">
+                <a href="tel:0447881898" className="flex items-center gap-2 text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
                   <Phone className="w-4 h-4" />
                   0447 881 898
                 </a>
               </li>
               <li>
-                <a href="mailto:info@jsaairconditioning.com.au" className="flex items-center gap-3 text-primary-foreground/60 hover:text-primary-foreground transition-colors">
+                <a href="mailto:info@jsaairconditioning.com.au" className="flex items-center gap-2 text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors">
                   <Mail className="w-4 h-4" />
                   Email Us
                 </a>
               </li>
               <li>
-                <span className="flex items-center gap-3 text-primary-foreground/60">
+                <span className="flex items-center gap-2 text-sm text-primary-foreground/60">
                   <MapPin className="w-4 h-4" />
                   Newcastle & Hunter
                 </span>
@@ -90,7 +79,7 @@ const Footer = () => {
 
         <div className="border-t border-primary-foreground/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-primary-foreground/40">
           <p>© {currentYear} JSA Airconditioning & Refrigeration</p>
-          <p>Fully Licensed & Insured</p>
+          <p>Licensed & Insured</p>
         </div>
       </div>
     </footer>

@@ -15,15 +15,11 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground rounded-full hover:bg-secondary/80",
         ghost: "hover:bg-muted rounded-full",
         link: "text-foreground underline-offset-4 hover:underline",
-        // Premium CTA with glow
-        cta: "bg-cta text-cta-foreground rounded-full shadow-cta hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]",
-        // Hero buttons for dark backgrounds
-        hero: "bg-cta text-cta-foreground rounded-full shadow-cta hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]",
-        heroOutline: "glass-dark rounded-full text-primary-foreground hover:bg-primary-foreground/10 active:scale-[0.98]",
-        // Accent button
-        accent: "bg-accent text-accent-foreground rounded-full shadow-accent hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]",
-        // Glass style
-        glass: "glass rounded-full hover:bg-card/90",
+        cta: "bg-cta text-cta-foreground rounded-full shadow-cta hover:scale-[1.02] active:scale-[0.98]",
+        hero: "bg-cta text-cta-foreground rounded-full shadow-cta hover:scale-[1.02] active:scale-[0.98]",
+        heroDark: "bg-primary text-primary-foreground rounded-full hover:bg-primary/90 active:scale-[0.98]",
+        heroOutline: "border-2 border-foreground/20 bg-transparent rounded-full text-foreground hover:bg-foreground/5 active:scale-[0.98]",
+        accent: "bg-accent text-accent-foreground rounded-full hover:opacity-90 active:scale-[0.98]",
       },
       size: {
         default: "h-11 px-6 py-2",
