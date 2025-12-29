@@ -1,26 +1,30 @@
-import { Wind, Thermometer, Wrench, Sparkles, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import serviceSplit from "@/assets/service-split.jpg";
+import serviceDucted from "@/assets/service-ducted.jpg";
+import serviceRepair from "@/assets/service-repair.jpg";
+import serviceMaintenance from "@/assets/service-maintenance.jpg";
 
 const services = [
   {
-    icon: Wind,
+    image: serviceSplit,
     title: "Split Systems",
     description: "Wall-mounted units for precise room-by-room climate control with whisper-quiet operation.",
     color: "accent",
   },
   {
-    icon: Thermometer,
+    image: serviceDucted,
     title: "Ducted AC",
     description: "Whole-home solutions with discrete vents and intelligent zone management.",
     color: "cta",
   },
   {
-    icon: Wrench,
+    image: serviceRepair,
     title: "Repairs",
     description: "Fast, reliable diagnostics and repairs for all major brands. Same-day service available.",
     color: "accent",
   },
   {
-    icon: Sparkles,
+    image: serviceMaintenance,
     title: "Maintenance",
     description: "Preventative care programs to maximize efficiency and extend system life.",
     color: "cta",
@@ -49,30 +53,45 @@ const Services = () => {
 
         {/* Services Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service, index) => {
-            const colorClasses = service.color === "accent" 
-              ? "bg-accent/10 text-accent group-hover:bg-accent" 
-              : "bg-cta/10 text-cta group-hover:bg-cta";
+          {services.map((service) => {
+            const badgeColor = service.color === "accent" 
+              ? "bg-accent text-accent-foreground" 
+              : "bg-cta text-cta-foreground";
             
             return (
               <div
                 key={service.title}
-                className="group relative bg-card rounded-2xl p-8 border border-border hover:border-accent/30 hover:shadow-md transition-all duration-300"
+                className="group relative bg-card rounded-2xl overflow-hidden border border-border hover:border-accent/30 hover:shadow-lg transition-all duration-500"
               >
-                <div className={`w-12 h-12 rounded-xl ${colorClasses} flex items-center justify-center mb-6 transition-all duration-300 group-hover:text-white group-hover:scale-110`}>
-                  <service.icon className="w-6 h-6" />
+                {/* Image Container */}
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src={service.image} 
+                    alt={service.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+                  
+                  {/* Badge */}
+                  <div className={`absolute top-4 left-4 ${badgeColor} px-3 py-1 rounded-full text-xs font-semibold`}>
+                    {service.title}
+                  </div>
                 </div>
 
-                <h3 className="font-display text-xl font-bold text-foreground mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                  {service.description}
-                </p>
+                {/* Content */}
+                <div className="p-6">
+                  <h3 className="font-display text-xl font-bold text-foreground mb-3">
+                    {service.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                    {service.description}
+                  </p>
 
-                <div className="flex items-center gap-2 text-sm font-medium text-foreground opacity-0 group-hover:opacity-100 transition-opacity">
-                  Learn more
-                  <ArrowRight className="w-4 h-4" />
+                  <div className="flex items-center gap-2 text-sm font-medium text-accent group-hover:gap-3 transition-all duration-300">
+                    Learn more
+                    <ArrowRight className="w-4 h-4" />
+                  </div>
                 </div>
               </div>
             );
