@@ -1,9 +1,9 @@
-import { CheckCircle2, Users, Award, MapPin } from "lucide-react";
+import { CheckCircle2, Users, Award, MapPin, Zap } from "lucide-react";
 
 const features = [
   "Family owned & operated",
   "Fully licensed & insured",
-  "All major brands serviced",
+  "All major brands",
   "Competitive pricing",
   "Same-week availability",
   "Workmanship warranty",
@@ -11,67 +11,82 @@ const features = [
 
 const About = () => {
   return (
-    <section id="about" className="py-24 bg-background">
-      <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+    <section id="about" className="py-32 bg-background relative overflow-hidden">
+      {/* Background */}
+      <div className="absolute top-1/2 -translate-y-1/2 left-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px]" />
+
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
           {/* Content */}
-          <div>
-            <span className="inline-block text-accent font-semibold text-sm uppercase tracking-wider mb-3">
-              About JSA
+          <div className="lg:col-span-6">
+            <span className="inline-block text-accent font-semibold text-sm uppercase tracking-widest mb-4">
+              About Us
             </span>
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-6">
-              Your Local Climate
-              <span className="text-accent"> Experts</span>
+            <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
+              Local Experts,
+              <br />
+              <span className="text-muted-foreground">Real Results</span>
             </h2>
-            <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
-              JSA Airconditioning &amp; Refrigeration is a family-owned business proudly serving 
-              the Newcastle region and beyond. With extensive industry experience, Jarrod and 
-              Kasey are committed to providing modern, reliable climate solutions for homes 
-              and workplaces.
+            <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+              JSA Airconditioning & Refrigeration is a family-owned business proudly serving 
+              Newcastle and the Hunter Region. With Jarrod and Kasey at the helm, we bring 
+              genuine care and expertise to every installation and service call.
             </p>
-            <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
+            <p className="text-lg text-muted-foreground mb-10 leading-relaxed">
               We believe in honest advice, quality workmanship, and building lasting 
-              relationships with our customers. When you choose JSA, you're choosing 
-              a local team that genuinely cares about your comfort.
+              relationships. When you choose JSA, you're choosing neighbors who genuinely 
+              care about your comfort.
             </p>
 
-            {/* Features Grid */}
-            <div className="grid sm:grid-cols-2 gap-3 mb-8">
+            {/* Features */}
+            <div className="grid sm:grid-cols-2 gap-4">
               {features.map((feature) => (
                 <div key={feature} className="flex items-center gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-accent flex-shrink-0" />
+                  <div className="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0">
+                    <CheckCircle2 className="w-4 h-4 text-accent" />
+                  </div>
                   <span className="text-foreground font-medium">{feature}</span>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Stats Cards */}
-          <div className="grid grid-cols-2 gap-4">
-            <div className="bg-card rounded-2xl p-8 shadow-soft text-center">
-              <div className="w-14 h-14 rounded-xl bg-accent/10 flex items-center justify-center mx-auto mb-4">
-                <Users className="w-7 h-7 text-accent" />
+          {/* Stats */}
+          <div className="lg:col-span-6">
+            <div className="grid grid-cols-2 gap-5">
+              <div className="bg-card rounded-3xl p-8 shadow-sm border border-border/50 hover:shadow-lg hover:border-accent/20 transition-all duration-300">
+                <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center mb-5">
+                  <Users className="w-6 h-6 text-accent" />
+                </div>
+                <p className="font-display text-4xl font-bold text-foreground mb-1">540+</p>
+                <p className="text-muted-foreground">Happy Customers</p>
               </div>
-              <p className="font-display text-4xl font-bold text-foreground mb-2">540+</p>
-              <p className="text-muted-foreground">Happy Customers</p>
-            </div>
-            <div className="bg-card rounded-2xl p-8 shadow-soft text-center">
-              <div className="w-14 h-14 rounded-xl bg-cta/10 flex items-center justify-center mx-auto mb-4">
-                <Award className="w-7 h-7 text-cta" />
+
+              <div className="bg-card rounded-3xl p-8 shadow-sm border border-border/50 hover:shadow-lg hover:border-accent/20 transition-all duration-300">
+                <div className="w-12 h-12 rounded-2xl bg-cta/10 flex items-center justify-center mb-5">
+                  <Award className="w-6 h-6 text-cta" />
+                </div>
+                <p className="font-display text-4xl font-bold text-foreground mb-1">10+</p>
+                <p className="text-muted-foreground">Years Experience</p>
               </div>
-              <p className="font-display text-4xl font-bold text-foreground mb-2">10+</p>
-              <p className="text-muted-foreground">Years Experience</p>
-            </div>
-            <div className="col-span-2 bg-primary rounded-2xl p-8 shadow-soft text-center">
-              <div className="w-14 h-14 rounded-xl bg-primary-foreground/10 flex items-center justify-center mx-auto mb-4">
-                <MapPin className="w-7 h-7 text-primary-foreground" />
+
+              <div className="bg-card rounded-3xl p-8 shadow-sm border border-border/50 hover:shadow-lg hover:border-accent/20 transition-all duration-300">
+                <div className="w-12 h-12 rounded-2xl bg-accent/10 flex items-center justify-center mb-5">
+                  <Zap className="w-6 h-6 text-accent" />
+                </div>
+                <p className="font-display text-4xl font-bold text-foreground mb-1">Same</p>
+                <p className="text-muted-foreground">Week Service</p>
               </div>
-              <p className="font-display text-2xl font-bold text-primary-foreground mb-2">
-                Newcastle &amp; Hunter Region
-              </p>
-              <p className="text-primary-foreground/70">
-                Proudly serving our local community
-              </p>
+
+              <div className="bg-primary rounded-3xl p-8 shadow-lg">
+                <div className="w-12 h-12 rounded-2xl bg-primary-foreground/10 flex items-center justify-center mb-5">
+                  <MapPin className="w-6 h-6 text-primary-foreground" />
+                </div>
+                <p className="font-display text-xl font-bold text-primary-foreground mb-1">
+                  Newcastle & Hunter
+                </p>
+                <p className="text-primary-foreground/60">Service Area</p>
+              </div>
             </div>
           </div>
         </div>
