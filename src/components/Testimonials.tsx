@@ -2,126 +2,86 @@ import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: "Sarah M.",
+    name: "Sarah Mitchell",
     location: "Charlestown",
     rating: 5,
-    text: "Jarrod was fantastic from start to finish. He explained everything clearly, arrived on time, and the installation was spotless. Our new split system works perfectly. Highly recommend!",
-    service: "Split System Installation",
+    text: "Jarrod was fantastic from start to finish. He explained everything clearly, arrived on time, and the installation was spotless. Our new split system works perfectly.",
+    service: "Split System",
   },
   {
-    name: "David K.",
+    name: "David Kim",
     location: "Maitland",
     rating: 5,
-    text: "Called JSA for an urgent repair on a 40-degree day. They came out same day and had us cool again within hours. Professional, honest pricing, and genuinely friendly service.",
+    text: "Called JSA for an urgent repair on a 40-degree day. They came out same day and had us cool again within hours. Professional, honest pricing, and genuinely friendly.",
     service: "Emergency Repair",
   },
   {
-    name: "Michelle T.",
+    name: "Michelle Torres",
     location: "Newcastle",
     rating: 5,
-    text: "We had a whole-home ducted system installed. The team was incredibly tidy and respectful of our home. The zoning works brilliantly - exactly what we needed for our family.",
-    service: "Ducted AC Installation",
-  },
-  {
-    name: "Greg P.",
-    location: "Lake Macquarie",
-    rating: 5,
-    text: "Been using JSA for all our rental properties. Always reliable, fair pricing, and they communicate well with tenants. Makes my job as a landlord so much easier.",
-    service: "Ongoing Maintenance",
+    text: "We had a whole-home ducted system installed. The team was incredibly tidy and respectful of our home. The zoning works brilliantly for our family.",
+    service: "Ducted AC",
   },
 ];
 
 const Testimonials = () => {
   return (
-    <section className="py-32 bg-background relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute bottom-0 left-1/4 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[150px]" />
-
-      <div className="container mx-auto px-4 relative z-10">
-        {/* Section Header */}
+    <section className="py-28 bg-secondary">
+      <div className="container mx-auto px-6">
+        {/* Header */}
         <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="inline-block text-accent font-semibold text-sm uppercase tracking-widest mb-4">
+          <span className="text-accent font-semibold text-sm uppercase tracking-wider mb-3 block">
             Testimonials
           </span>
-          <h2 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
-            What Our
-            <br />
-            <span className="text-muted-foreground">Customers Say</span>
+          <h2 className="font-display text-4xl sm:text-5xl font-extrabold text-foreground leading-tight mb-4">
+            Trusted by 540+
+            <span className="text-muted-foreground"> local customers</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
-            Don't just take our word for it — hear from homeowners and businesses 
-            across Newcastle and the Hunter Region.
-          </p>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 gap-6">
-          {testimonials.map((testimonial, index) => (
+        {/* Testimonials */}
+        <div className="grid md:grid-cols-3 gap-6">
+          {testimonials.map((testimonial) => (
             <div
               key={testimonial.name}
-              className="group relative bg-card rounded-3xl p-8 sm:p-10 shadow-sm border border-border/50 hover:shadow-lg hover:border-accent/20 transition-all duration-500"
+              className="bg-background rounded-2xl p-8 shadow-sm hover:shadow-md transition-shadow duration-300"
             >
-              {/* Quote Icon */}
-              <div className="absolute top-8 right-8 opacity-10 group-hover:opacity-20 transition-opacity">
-                <Quote className="w-12 h-12 text-accent" />
-              </div>
-
               {/* Stars */}
-              <div className="flex gap-1 mb-6">
+              <div className="flex gap-1 mb-5">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star
-                    key={i}
-                    className="w-5 h-5 fill-cta text-cta"
-                  />
+                  <Star key={i} className="w-4 h-4 fill-cta text-cta" />
                 ))}
               </div>
 
               {/* Quote */}
-              <p className="text-foreground text-lg leading-relaxed mb-8">
+              <p className="text-foreground leading-relaxed mb-6">
                 "{testimonial.text}"
               </p>
 
               {/* Author */}
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center font-display font-bold text-accent">
-                    {testimonial.name.charAt(0)}
-                  </div>
-                  <div>
-                    <p className="font-semibold text-foreground">{testimonial.name}</p>
-                    <p className="text-sm text-muted-foreground">{testimonial.location}</p>
-                  </div>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-accent/10 flex items-center justify-center font-bold text-accent text-sm">
+                  {testimonial.name.split(' ').map(n => n[0]).join('')}
                 </div>
-                <span className="hidden sm:block px-3 py-1.5 rounded-full bg-muted text-xs font-medium text-muted-foreground">
-                  {testimonial.service}
-                </span>
+                <div>
+                  <p className="font-semibold text-foreground text-sm">{testimonial.name}</p>
+                  <p className="text-xs text-muted-foreground">{testimonial.location} · {testimonial.service}</p>
+                </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Trust Badge */}
-        <div className="mt-16 text-center">
-          <div className="inline-flex items-center gap-4 glass rounded-full px-8 py-4">
-            <div className="flex -space-x-2">
-              {["S", "D", "M", "G"].map((initial, i) => (
-                <div
-                  key={i}
-                  className="w-10 h-10 rounded-full bg-accent/10 border-2 border-card flex items-center justify-center text-sm font-semibold text-accent"
-                >
-                  {initial}
-                </div>
+        {/* Rating Summary */}
+        <div className="mt-12 flex justify-center">
+          <div className="flex items-center gap-3 bg-background rounded-full px-6 py-3 shadow-sm">
+            <div className="flex gap-0.5">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="w-4 h-4 fill-cta text-cta" />
               ))}
             </div>
-            <div className="text-left">
-              <div className="flex items-center gap-1">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-cta text-cta" />
-                ))}
-                <span className="ml-2 font-semibold text-foreground">5.0</span>
-              </div>
-              <p className="text-sm text-muted-foreground">From 540+ happy customers</p>
-            </div>
+            <span className="font-semibold text-foreground">5.0</span>
+            <span className="text-muted-foreground text-sm">from 540+ reviews</span>
           </div>
         </div>
       </div>

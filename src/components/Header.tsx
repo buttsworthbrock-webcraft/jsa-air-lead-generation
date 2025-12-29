@@ -25,35 +25,24 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? "py-3"
-          : "py-6"
+        isScrolled ? "bg-background/95 backdrop-blur-md shadow-sm py-4" : "py-6"
       }`}
     >
-      <div className="container mx-auto px-4">
-        <div className={`flex items-center justify-between transition-all duration-500 ${
-          isScrolled 
-            ? "glass rounded-full px-6 py-2 shadow-lg" 
-            : ""
-        }`}>
+      <div className="container mx-auto px-6">
+        <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <div className={`relative transition-all duration-300 ${isScrolled ? "w-10 h-10" : "w-12 h-12"}`}>
-              <div className={`absolute inset-0 rounded-2xl rotate-6 transition-all duration-300 ${
-                isScrolled ? "bg-accent/20" : "bg-primary-foreground/10"
-              }`} />
-              <div className={`absolute inset-0 rounded-2xl flex items-center justify-center font-display font-bold transition-all duration-300 ${
-                isScrolled 
-                  ? "bg-primary text-primary-foreground text-sm" 
-                  : "bg-primary-foreground/10 backdrop-blur-sm text-primary-foreground text-base"
-              }`}>
-                JSA
-              </div>
+            <div className="w-11 h-11 rounded-xl bg-primary flex items-center justify-center">
+              <span className="text-primary-foreground font-display font-bold text-sm">JSA</span>
+            </div>
+            <div className="hidden sm:block">
+              <p className="font-display font-bold text-sm text-foreground leading-tight">Airconditioning</p>
+              <p className="text-xs text-muted-foreground">& Refrigeration</p>
             </div>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className={`hidden lg:flex items-center gap-1 transition-colors duration-300`}>
+          <nav className="hidden lg:flex items-center gap-1">
             {[
               { name: "Home", id: "home" },
               { name: "Services", id: "services" },
@@ -63,46 +52,30 @@ const Header = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className={`px-5 py-2.5 rounded-full font-medium transition-all duration-300 ${
-                  isScrolled 
-                    ? "text-foreground hover:bg-muted" 
-                    : "text-primary-foreground/80 hover:text-primary-foreground hover:bg-primary-foreground/10"
-                }`}
+                className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
               >
                 {item.name}
               </button>
             ))}
           </nav>
 
-          {/* CTA Buttons */}
-          <div className="hidden lg:flex items-center gap-3">
+          {/* CTA */}
+          <div className="hidden lg:flex items-center gap-4">
             <a
               href="tel:0447881898"
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-full font-medium transition-all duration-300 ${
-                isScrolled 
-                  ? "text-foreground hover:bg-muted" 
-                  : "text-primary-foreground/80 hover:text-primary-foreground"
-              }`}
+              className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-accent transition-colors"
             >
               <Phone className="w-4 h-4" />
-              <span className="hidden xl:inline">0447 881 898</span>
+              0447 881 898
             </a>
-            <Button
-              variant={isScrolled ? "cta" : "hero"}
-              size="default"
-              onClick={() => scrollToSection("contact")}
-            >
+            <Button variant="cta" size="default" onClick={() => scrollToSection("contact")}>
               Get Quote
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu */}
           <button
-            className={`lg:hidden p-2.5 rounded-full transition-all duration-300 ${
-              isScrolled 
-                ? "text-foreground hover:bg-muted" 
-                : "text-primary-foreground hover:bg-primary-foreground/10"
-            }`}
+            className="lg:hidden p-2 text-foreground"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -110,48 +83,33 @@ const Header = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <div className={`lg:hidden absolute top-full left-0 right-0 transition-all duration-300 ${
-        isMobileMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-4 pointer-events-none"
-      }`}>
-        <div className="container mx-auto px-4 pt-4">
-          <div className="glass rounded-3xl p-6 shadow-xl">
-            <nav className="flex flex-col gap-1 mb-6">
-              {[
-                { name: "Home", id: "home" },
-                { name: "Services", id: "services" },
-                { name: "About", id: "about" },
-                { name: "Contact", id: "contact" },
-              ].map((item) => (
+      {/* Mobile Menu Dropdown */}
+      {isMobileMenuOpen && (
+        <div className="lg:hidden absolute top-full left-0 right-0 bg-background border-t border-border shadow-lg">
+          <div className="container mx-auto px-6 py-6">
+            <nav className="flex flex-col gap-2 mb-6">
+              {["Home", "Services", "About", "Contact"].map((item) => (
                 <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="text-left py-3 px-4 rounded-2xl hover:bg-muted transition-colors font-medium text-foreground"
+                  key={item}
+                  onClick={() => scrollToSection(item.toLowerCase())}
+                  className="text-left py-3 px-4 rounded-lg hover:bg-muted text-foreground font-medium"
                 >
-                  {item.name}
+                  {item}
                 </button>
               ))}
             </nav>
             <div className="flex flex-col gap-3">
-              <Button
-                variant="outline"
-                className="w-full justify-center"
-                onClick={() => window.location.href = "tel:0447881898"}
-              >
+              <Button variant="outline" onClick={() => window.location.href = "tel:0447881898"}>
                 <Phone className="w-4 h-4" />
                 0447 881 898
               </Button>
-              <Button
-                variant="cta"
-                className="w-full justify-center"
-                onClick={() => scrollToSection("contact")}
-              >
+              <Button variant="cta" onClick={() => scrollToSection("contact")}>
                 Get Quote
               </Button>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </header>
   );
 };
