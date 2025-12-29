@@ -4,10 +4,10 @@ import Services from "@/components/Services";
 import Brands from "@/components/Brands";
 import Testimonials from "@/components/Testimonials";
 import About from "@/components/About";
+import ServiceAreaMap from "@/components/ServiceAreaMap";
 import FAQ from "@/components/FAQ";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
-
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
@@ -21,6 +21,7 @@ const Index = () => {
         <Brands />
         <Testimonials />
         <About />
+        <ServiceAreaMap />
         <FAQ />
         <ContactForm />
       </main>
