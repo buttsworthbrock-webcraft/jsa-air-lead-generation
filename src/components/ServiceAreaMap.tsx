@@ -54,44 +54,76 @@ const ServiceAreaMap = () => {
       iconAnchor: [isMain ? 18 : 14, isMain ? 36 : 28],
     });
 
-    // Service area locations
-    const locations = [
-      { name: 'Newcastle', coords: [-32.9283, 151.7817] as [number, number], main: true },
-      { name: 'Lake Macquarie', coords: [-33.0833, 151.5833] as [number, number], main: false },
-      { name: 'Maitland', coords: [-32.7333, 151.5500] as [number, number], main: false },
-      { name: 'Cessnock', coords: [-32.8333, 151.3500] as [number, number], main: false },
-      { name: 'Port Stephens', coords: [-32.7167, 152.1167] as [number, number], main: false },
+    // Service area polygons with approximate boundaries
+    const serviceAreas = [
+      {
+        name: 'Newcastle',
+        coords: [
+          [-32.85, 151.70], [-32.85, 151.85], [-32.98, 151.85], [-32.98, 151.70]
+        ] as [number, number][],
+        color: '#ef4444',
+        main: true
+      },
+      {
+        name: 'Lake Macquarie',
+        coords: [
+          [-32.98, 151.45], [-32.98, 151.70], [-33.20, 151.70], [-33.20, 151.45]
+        ] as [number, number][],
+        color: '#3b82f6',
+        main: false
+      },
+      {
+        name: 'Maitland',
+        coords: [
+          [-32.60, 151.45], [-32.60, 151.65], [-32.80, 151.65], [-32.80, 151.45]
+        ] as [number, number][],
+        color: '#8b5cf6',
+        main: false
+      },
+      {
+        name: 'Cessnock',
+        coords: [
+          [-32.75, 151.25], [-32.75, 151.45], [-32.95, 151.45], [-32.95, 151.25]
+        ] as [number, number][],
+        color: '#f59e0b',
+        main: false
+      },
+      {
+        name: 'Port Stephens',
+        coords: [
+          [-32.60, 151.95], [-32.60, 152.20], [-32.80, 152.20], [-32.80, 151.95]
+        ] as [number, number][],
+        color: '#10b981',
+        main: false
+      },
     ];
 
-    // Add markers
-    locations.forEach(location => {
-      const marker = L.marker(location.coords, { 
-        icon: createMarkerIcon(location.main) 
+    // Add area polygons and markers
+    serviceAreas.forEach(area => {
+      // Add polygon overlay
+      L.polygon(area.coords, {
+        color: area.color,
+        weight: 2,
+        fillColor: area.color,
+        fillOpacity: 0.25,
+      }).addTo(map.current!);
+
+      // Calculate center for marker
+      const centerLat = area.coords.reduce((sum, c) => sum + c[0], 0) / area.coords.length;
+      const centerLng = area.coords.reduce((sum, c) => sum + c[1], 0) / area.coords.length;
+
+      // Add marker
+      const marker = L.marker([centerLat, centerLng], { 
+        icon: createMarkerIcon(area.main) 
       }).addTo(map.current!);
       
       marker.bindPopup(`
         <div style="text-align: center; padding: 8px; min-width: 120px;">
-          <strong style="font-size: 15px; color: #1f2937;">${location.name}</strong>
-          ${location.main ? '<br><span style="color: #16a34a; font-size: 12px; font-weight: 500;">Main Service Hub</span>' : ''}
+          <strong style="font-size: 15px; color: #1f2937;">${area.name}</strong>
+          ${area.main ? '<br><span style="color: #16a34a; font-size: 12px; font-weight: 500;">Main Service Hub</span>' : ''}
         </div>
       `, { className: 'custom-popup' });
     });
-
-    // Service area polygon (approximate bounds)
-    const serviceAreaBounds: [number, number][] = [
-      [-32.5, 151.2],
-      [-32.5, 152.25],
-      [-33.25, 152.25],
-      [-33.25, 151.2],
-    ];
-
-    L.polygon(serviceAreaBounds, {
-      color: '#16a34a',
-      weight: 2,
-      fillColor: '#22c55e',
-      fillOpacity: 0.12,
-      dashArray: '10, 6',
-    }).addTo(map.current);
 
     return () => {
       if (map.current) {
