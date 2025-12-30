@@ -1,5 +1,6 @@
 import { forwardRef } from "react";
 import { Phone, Mail, MapPin, Facebook, Instagram } from "lucide-react";
+import logo from "@/assets/logo.svg";
 
 const Footer = forwardRef<HTMLElement>((_, ref) => {
   const currentYear = new Date().getFullYear();
@@ -14,10 +15,12 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
         <div className="grid md:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="md:col-span-1">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-primary-foreground/10 flex items-center justify-center font-display font-bold text-sm">
-                JSA
-              </div>
+            <div className="mb-4">
+              <img 
+                src={logo} 
+                alt="JSA Airconditioning & Refrigeration" 
+                className="h-10 w-auto brightness-0 invert"
+              />
             </div>
             <p className="text-primary-foreground/70 text-sm leading-relaxed mb-4">
               Family-owned HVAC specialists serving Newcastle and the Hunter Region.
