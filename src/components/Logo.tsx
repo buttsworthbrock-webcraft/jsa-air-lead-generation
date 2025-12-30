@@ -9,7 +9,7 @@ export default function Logo({ className = "", color = "currentColor" }: { class
       <text
         x="200"
         y="210"
-        fontFamily="Arial, Helvetica, sans-serif"
+        fontFamily="'Oktah Neue', Arial, Helvetica, sans-serif"
         fontSize="115"
         fontWeight="700"
         fill={color}
@@ -21,7 +21,7 @@ export default function Logo({ className = "", color = "currentColor" }: { class
       <text
         x="200"
         y="248"
-        fontFamily="Arial, Helvetica, sans-serif"
+        fontFamily="'Oktah Neue', Arial, Helvetica, sans-serif"
         fontSize="16"
         fontWeight="300"
         fill={color}
@@ -33,7 +33,7 @@ export default function Logo({ className = "", color = "currentColor" }: { class
       <text
         x="200"
         y="268"
-        fontFamily="Arial, Helvetica, sans-serif"
+        fontFamily="'Oktah Neue', Arial, Helvetica, sans-serif"
         fontSize="16"
         fontWeight="300"
         fill={color}
