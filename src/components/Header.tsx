@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Phone, Menu, X } from "lucide-react";
-import Logo from "./Logo";
+import logo from "@/assets/logo.svg";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,9 +35,11 @@ const Header = () => {
         <div className="flex items-center justify-between relative">
           {/* Logo */}
           <div className="flex items-center">
-            <Logo 
-              className={`h-12 w-auto transition-colors duration-500 ${
-                isScrolled ? "text-foreground" : "text-primary-foreground"
+            <img 
+              src={logo} 
+              alt="JSA Airconditioning & Refrigeration" 
+              className={`h-12 w-auto transition-all duration-500 ${
+                isScrolled ? "" : "brightness-0 invert"
               }`}
             />
           </div>
