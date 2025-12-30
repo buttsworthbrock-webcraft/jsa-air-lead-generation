@@ -1,11 +1,6 @@
 export default function Logo({ className = "", color = "currentColor" }: { className?: string; color?: string }) {
   return (
-    <svg
-      viewBox="0 0 400 400"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-    >
+    <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
       <text
         x="200"
         y="210"
@@ -14,7 +9,7 @@ export default function Logo({ className = "", color = "currentColor" }: { class
         fontWeight="700"
         fill={color}
         textAnchor="middle"
-        letterSpacing="-4"
+        letterSpacing="5"
       >
         JSA
       </text>
