@@ -64,26 +64,24 @@ const ServiceAreaMap = () => {
       [-33.15, 151.50],
       [-33.20, 151.65],
       [-33.10, 151.78],
-      // East along coast
+      // East coast - smooth curve up
       [-32.98, 151.82],
       [-32.92, 151.80],
-      // Newcastle (east)
       [-32.88, 151.82],
-      [-32.82, 151.78],
-      // Up to Port Stephens (northeast)
-      [-32.75, 151.85],
-      [-32.65, 152.00],
+      // Connect along coastline to Port Stephens
+      [-32.80, 151.88],
+      [-32.72, 151.95],
+      [-32.65, 152.05],
       [-32.55, 152.15],
       [-32.70, 152.22],
-      [-32.82, 152.10],
-      // Back west through Maitland
-      [-32.78, 151.90],
-      [-32.72, 151.75],
-      [-32.62, 151.60],
-      [-32.58, 151.50],
-      // Maitland area
-      [-32.65, 151.40],
-      [-32.70, 151.30],
+      // Top of Port Stephens - connect across to Maitland peak
+      [-32.58, 152.10],
+      [-32.55, 151.90],
+      [-32.55, 151.70],
+      [-32.55, 151.50],
+      // Connect to Cessnock area
+      [-32.60, 151.35],
+      [-32.70, 151.25],
       // Back to Cessnock
       [-32.75, 151.20],
     ];
