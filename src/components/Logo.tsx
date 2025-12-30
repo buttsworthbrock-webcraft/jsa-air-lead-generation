@@ -16,7 +16,7 @@ export default function Logo({ className = "", color = "currentColor" }: { class
         x="230"
         y="55"
         fontFamily="'Oktah Neue', Arial, Helvetica, sans-serif"
-        fontSize="32"
+        fontSize="36"
         fontWeight="300"
         fill={color}
         letterSpacing="4"
@@ -27,7 +27,7 @@ export default function Logo({ className = "", color = "currentColor" }: { class
         x="230"
         y="85"
         fontFamily="'Oktah Neue', Arial, Helvetica, sans-serif"
-        fontSize="32"
+        fontSize="36"
         fontWeight="300"
         fill={color}
         letterSpacing="4"
