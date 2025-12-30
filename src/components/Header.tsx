@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Phone, Menu, X } from "lucide-react";
-import logo from "@/assets/logo.svg";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,17 +31,9 @@ const Header = () => {
       }`}
     >
       <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between relative">
-          {/* Logo */}
-          <div className="flex items-center">
-            <img 
-              src={logo} 
-              alt="JSA Airconditioning & Refrigeration" 
-              className={`h-12 w-auto transition-all duration-500 ${
-                isScrolled ? "" : "brightness-0 invert"
-              }`}
-            />
-          </div>
+        <div className="flex items-center justify-end lg:justify-between relative">
+          {/* Spacer for layout balance on desktop */}
+          <div className="hidden lg:block w-48" />
 
           {/* Desktop Navigation - Centered */}
           <nav className="hidden lg:flex items-center gap-1 absolute left-1/2 -translate-x-1/2" aria-label="Main navigation">
