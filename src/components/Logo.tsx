@@ -13,7 +13,7 @@ export default function Logo({ className = "", color = "currentColor" }: { class
         JSA
       </text>
       <text
-        x="200"
+        x="230"
         y="55"
         fontFamily="'Oktah Neue', Arial, Helvetica, sans-serif"
         fontSize="22"
@@ -24,7 +24,7 @@ export default function Logo({ className = "", color = "currentColor" }: { class
         AIRCONDITIONING
       </text>
       <text
-        x="200"
+        x="230"
         y="85"
         fontFamily="'Oktah Neue', Arial, Helvetica, sans-serif"
         fontSize="22"
