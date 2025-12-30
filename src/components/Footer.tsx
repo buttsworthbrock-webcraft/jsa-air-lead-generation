@@ -52,13 +52,21 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
           <div>
             <h4 className="font-semibold mb-4 text-sm">Navigation</h4>
             <ul className="space-y-2">
-              {["Home", "Services", "About", "Contact"].map((item) => (
-                <li key={item}>
+              {[
+                { name: "Home", id: "home" },
+                { name: "Services", id: "services" },
+                { name: "Service Areas", id: "service-areas" },
+                { name: "Testimonials", id: "testimonials" },
+                { name: "FAQ", id: "faq" },
+                { name: "About", id: "about" },
+                { name: "Contact", id: "contact" },
+              ].map((item) => (
+                <li key={item.id}>
                   <button
-                    onClick={() => scrollToSection(item.toLowerCase())}
+                    onClick={() => scrollToSection(item.id)}
                     className="text-sm text-primary-foreground/70 hover:text-primary-foreground transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent rounded"
                   >
-                    {item}
+                    {item.name}
                   </button>
                 </li>
               ))}

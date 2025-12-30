@@ -49,6 +49,9 @@ const Header = () => {
             {[
               { name: "Home", id: "home" },
               { name: "Services", id: "services" },
+              { name: "Service Areas", id: "service-areas" },
+              { name: "Testimonials", id: "testimonials" },
+              { name: "FAQ", id: "faq" },
               { name: "About", id: "about" },
               { name: "Contact", id: "contact" },
             ].map((item) => (
@@ -103,13 +106,21 @@ const Header = () => {
         <div className="lg:hidden absolute top-full left-0 right-0 bg-background border-t border-border shadow-lg">
           <div className="container mx-auto px-6 py-6">
             <nav className="flex flex-col gap-2 mb-6">
-              {["Home", "Services", "About", "Contact"].map((item) => (
+              {[
+                { name: "Home", id: "home" },
+                { name: "Services", id: "services" },
+                { name: "Service Areas", id: "service-areas" },
+                { name: "Testimonials", id: "testimonials" },
+                { name: "FAQ", id: "faq" },
+                { name: "About", id: "about" },
+                { name: "Contact", id: "contact" },
+              ].map((item) => (
                 <button
-                  key={item}
-                  onClick={() => scrollToSection(item.toLowerCase())}
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
                   className="text-left py-3 px-4 rounded-lg hover:bg-muted text-foreground font-medium"
                 >
-                  {item}
+                  {item.name}
                 </button>
               ))}
             </nav>
