@@ -6,13 +6,6 @@ export default function Logo({ className = "", color = "currentColor" }: { class
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
-      <path
-        d="M 160 65 A 165 165 0 1 1 70 300"
-        stroke={color}
-        strokeWidth="2.5"
-        fill="none"
-        strokeLinecap="round"
-      />
       <text
         x="200"
         y="210"
