@@ -14,6 +14,7 @@ const ContactForm = () => {
     email: "",
     phone: "",
     service: "",
+    timeline: "",
     message: "",
   });
 
@@ -25,7 +26,7 @@ const ContactForm = () => {
       title: "Quote Request Sent!",
       description: "Jarrod will be in touch within 24 hours.",
     });
-    setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+    setFormData({ name: "", email: "", phone: "", service: "", timeline: "", message: "" });
     setIsSubmitting(false);
   };
 
@@ -169,6 +170,24 @@ const ContactForm = () => {
                     <option value="repair">Repair / Service</option>
                     <option value="maintenance">Maintenance</option>
                     <option value="other">Other</option>
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="timeline" className="sr-only">I need this done by</label>
+                  <select
+                    id="timeline"
+                    name="timeline"
+                    value={formData.timeline}
+                    onChange={handleChange}
+                    required
+                    aria-required="true"
+                    className="w-full h-12 rounded-xl border border-input bg-background px-4 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                  >
+                    <option value="">I need this done by...</option>
+                    <option value="couple-months">In a couple of Months</option>
+                    <option value="this-month">This Month</option>
+                    <option value="couple-weeks">In a couple of Weeks</option>
+                    <option value="this-week">This Week</option>
                   </select>
                 </div>
                 <div>
