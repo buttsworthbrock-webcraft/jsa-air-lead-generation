@@ -32,6 +32,7 @@ const Hero = () => {
             <span className="text-accent font-medium text-sm uppercase tracking-widest">
               Newcastle & Hunter Region
             </span>
+            <span className="text-primary-foreground/60 text-xs ml-2">Licence: 470120C</span>
           </div>
 
           {/* Main Headline */}

@@ -101,7 +101,7 @@ const Footer = forwardRef<HTMLElement>((_, ref) => {
 
         <div className="border-t border-primary-foreground/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-primary-foreground/40">
           <p>© {currentYear} JSA Airconditioning & Refrigeration</p>
-          <p>Licensed & Insured</p>
+          <p>Licence: 470120C • Licensed & Insured</p>
         </div>
       </div>
     </footer>
