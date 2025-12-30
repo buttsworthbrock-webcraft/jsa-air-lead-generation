@@ -38,7 +38,7 @@ const Header = () => {
             <img 
               src={logo} 
               alt="JSA Airconditioning & Refrigeration" 
-              className={`w-[180px] md:w-[240px] h-auto transition-all duration-500 ${
+              className={`w-[140px] md:w-[180px] h-auto transition-all duration-500 ${
                 isScrolled ? "" : "brightness-0 invert"
               }`}
             />
