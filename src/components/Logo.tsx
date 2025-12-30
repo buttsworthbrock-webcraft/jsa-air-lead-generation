@@ -1,6 +1,6 @@
 export default function Logo({ className = "", color = "currentColor" }: { className?: string; color?: string }) {
   return (
-    <svg viewBox="0 0 600 120" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    <svg viewBox="0 0 720 120" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
       <text
         x="0"
         y="85"
