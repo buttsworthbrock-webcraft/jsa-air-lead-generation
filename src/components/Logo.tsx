@@ -17,22 +17,22 @@ const Logo = ({ className = "", showTagline = true, inverted = false }: LogoProp
     >
       {/* Top right arc */}
       <path
-        d="M 140 15 A 70 70 0 0 1 175 75"
+        d="M 125 20 A 55 55 0 0 1 170 65"
         stroke={primaryColor}
-        strokeWidth="1.5"
+        strokeWidth="1.2"
         fill="none"
         strokeLinecap="round"
-        opacity="0.7"
+        opacity="0.6"
       />
       
       {/* Bottom left arc */}
       <path
-        d="M 25 45 A 70 70 0 0 0 60 105"
+        d="M 30 55 A 55 55 0 0 0 75 100"
         stroke={primaryColor}
-        strokeWidth="1.5"
+        strokeWidth="1.2"
         fill="none"
         strokeLinecap="round"
-        opacity="0.7"
+        opacity="0.6"
       />
       
       {/* JSA Text */}
