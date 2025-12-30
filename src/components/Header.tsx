@@ -39,7 +39,6 @@ const Header = () => {
               className={`h-12 w-auto transition-colors duration-500 ${
                 isScrolled ? "text-foreground" : "text-primary-foreground"
               }`}
-              showTagline={true}
             />
           </div>
 
