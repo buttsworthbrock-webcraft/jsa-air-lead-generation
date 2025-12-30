@@ -30,6 +30,7 @@ const Testimonials = () => {
 
   return (
     <section 
+      id="testimonials"
       ref={ref as React.RefObject<HTMLElement>}
       className="py-28 bg-secondary"
     >
