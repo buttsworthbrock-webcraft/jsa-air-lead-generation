@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Phone, ArrowDown } from "lucide-react";
 import heroImage from "@/assets/hero-ac.jpg";
-import logo from "@/assets/logo.svg";
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -24,18 +23,9 @@ const Hero = () => {
         <div className="absolute inset-0 bg-primary/40 lg:bg-gradient-to-r lg:from-primary lg:via-primary/80 lg:to-transparent" />
       </div>
 
-      {/* Logo - Positioned in blank space */}
-      <div className="absolute top-8 left-6 lg:left-12 z-20 opacity-0 animate-fade-up">
-        <img 
-          src={logo} 
-          alt="JSA Airconditioning & Refrigeration" 
-          className="h-24 lg:h-32 w-auto brightness-0 invert"
-        />
-      </div>
-
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 min-h-screen flex flex-col justify-center">
-        <div className="max-w-2xl pt-40 pb-20">
+        <div className="max-w-2xl pt-32 pb-20">
           {/* Eyebrow */}
           <div className="flex items-center gap-3 mb-8 opacity-0 animate-fade-up">
             <div className="h-px w-12 bg-accent" />
