@@ -41,10 +41,10 @@ const Logo = ({ className = "", showTagline = true, inverted = false }: LogoProp
         y="62"
         textAnchor="middle"
         fill={primaryColor}
-        fontFamily="Georgia, 'Times New Roman', serif"
-        fontSize="42"
+        fontFamily="'Bodoni Moda', Didot, 'Times New Roman', serif"
+        fontSize="46"
         fontWeight="400"
-        letterSpacing="2"
+        letterSpacing="6"
       >
         JSA
       </text>
