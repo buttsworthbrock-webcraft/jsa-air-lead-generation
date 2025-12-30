@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Phone, Menu, X } from "lucide-react";
+import Logo from "./Logo";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,20 +34,13 @@ const Header = () => {
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <div className="flex items-center gap-3">
-            <div className={`w-11 h-11 rounded-xl flex items-center justify-center transition-colors duration-500 ${
-              isScrolled ? "bg-primary" : "bg-primary-foreground/20"
-            }`}>
-              <span className="text-primary-foreground font-display font-bold text-sm">JSA</span>
-            </div>
-            <div className="hidden sm:block">
-              <p className={`font-display font-bold text-sm leading-tight transition-colors duration-500 ${
+          <div className="flex items-center">
+            <Logo 
+              className={`h-12 w-auto transition-colors duration-500 ${
                 isScrolled ? "text-foreground" : "text-primary-foreground"
-              }`}>Airconditioning</p>
-              <p className={`text-xs transition-colors duration-500 ${
-                isScrolled ? "text-muted-foreground" : "text-primary-foreground/70"
-              }`}>& Refrigeration</p>
-            </div>
+              }`}
+              showTagline={true}
+            />
           </div>
 
           {/* Desktop Navigation */}
