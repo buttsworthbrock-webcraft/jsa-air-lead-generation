@@ -1,85 +1,54 @@
-interface LogoProps {
-  className?: string;
-  showTagline?: boolean;
-  inverted?: boolean;
-}
-
-const Logo = ({ className = "", showTagline = true, inverted = false }: LogoProps) => {
-  const primaryColor = inverted ? "currentColor" : "currentColor";
-  
+export default function Logo({ className = "", color = "currentColor" }: { className?: string; color?: string }) {
   return (
-    <svg 
-      viewBox="0 0 200 120" 
-      className={className}
+    <svg
+      viewBox="0 0 400 400"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      aria-label="JSA Airconditioning & Refrigeration"
+      className={className}
     >
-      {/* Top right arc */}
       <path
-        d="M 125 20 A 55 55 0 0 1 170 65"
-        stroke={primaryColor}
-        strokeWidth="1.2"
+        d="M 160 65 A 165 165 0 1 1 70 300"
+        stroke={color}
+        strokeWidth="2.5"
         fill="none"
         strokeLinecap="round"
-        opacity="0.6"
       />
-      
-      {/* Bottom left arc */}
-      <path
-        d="M 30 55 A 55 55 0 0 0 75 100"
-        stroke={primaryColor}
-        strokeWidth="1.2"
-        fill="none"
-        strokeLinecap="round"
-        opacity="0.6"
-      />
-      
-      {/* JSA Text */}
       <text
-        x="100"
-        y="62"
+        x="200"
+        y="210"
+        fontFamily="Arial, Helvetica, sans-serif"
+        fontSize="115"
+        fontWeight="700"
+        fill={color}
         textAnchor="middle"
-        fill={primaryColor}
-        fontFamily="'Josefin Sans', sans-serif"
-        fontSize="48"
-        fontWeight="300"
-        letterSpacing="2"
+        letterSpacing="-4"
       >
         JSA
       </text>
-      
-      {/* Tagline */}
-      {showTagline && (
-        <>
-          <text
-            x="100"
-            y="82"
-            textAnchor="middle"
-            fill={primaryColor}
-            fontFamily="system-ui, sans-serif"
-            fontSize="9"
-            letterSpacing="3"
-            opacity="0.8"
-          >
-            AIRCONDITIONING
-          </text>
-          <text
-            x="100"
-            y="94"
-            textAnchor="middle"
-            fill={primaryColor}
-            fontFamily="system-ui, sans-serif"
-            fontSize="9"
-            letterSpacing="3"
-            opacity="0.8"
-          >
-            & REFRIGERATION
-          </text>
-        </>
-      )}
+      <text
+        x="200"
+        y="248"
+        fontFamily="Arial, Helvetica, sans-serif"
+        fontSize="16"
+        fontWeight="300"
+        fill={color}
+        textAnchor="middle"
+        letterSpacing="10"
+      >
+        AIRCONDITIONING
+      </text>
+      <text
+        x="200"
+        y="268"
+        fontFamily="Arial, Helvetica, sans-serif"
+        fontSize="16"
+        fontWeight="300"
+        fill={color}
+        textAnchor="middle"
+        letterSpacing="10"
+      >
+        & REFRIGERATION
+      </text>
     </svg>
   );
-};
-
-export default Logo;
+}
