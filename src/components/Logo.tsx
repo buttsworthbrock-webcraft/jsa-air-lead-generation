@@ -1,39 +1,36 @@
 export default function Logo({ className = "", color = "currentColor" }: { className?: string; color?: string }) {
   return (
-    <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
+    <svg viewBox="0 0 600 120" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
       <text
-        x="200"
-        y="210"
+        x="0"
+        y="85"
         fontFamily="'Oktah Neue', Arial, Helvetica, sans-serif"
-        fontSize="115"
+        fontSize="100"
         fontWeight="700"
         fill={color}
-        textAnchor="middle"
-        letterSpacing="5"
+        letterSpacing="-2"
       >
         JSA
       </text>
       <text
-        x="200"
-        y="248"
+        x="175"
+        y="55"
         fontFamily="'Oktah Neue', Arial, Helvetica, sans-serif"
-        fontSize="16"
+        fontSize="22"
         fontWeight="300"
         fill={color}
-        textAnchor="middle"
-        letterSpacing="10"
+        letterSpacing="4"
       >
         AIRCONDITIONING
       </text>
       <text
-        x="200"
-        y="268"
+        x="175"
+        y="85"
         fontFamily="'Oktah Neue', Arial, Helvetica, sans-serif"
-        fontSize="16"
+        fontSize="22"
         fontWeight="300"
         fill={color}
-        textAnchor="middle"
-        letterSpacing="10"
+        letterSpacing="4"
       >
         & REFRIGERATION
       </text>
