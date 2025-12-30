@@ -25,19 +25,27 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled ? "bg-background/95 backdrop-blur-md shadow-sm py-4" : "bg-background/80 backdrop-blur-sm py-6"
+        isScrolled 
+          ? "bg-background/95 backdrop-blur-md shadow-sm py-4" 
+          : "bg-transparent py-6"
       }`}
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <div className="w-11 h-11 rounded-xl bg-primary flex items-center justify-center">
+            <div className={`w-11 h-11 rounded-xl flex items-center justify-center transition-colors duration-500 ${
+              isScrolled ? "bg-primary" : "bg-primary-foreground/20"
+            }`}>
               <span className="text-primary-foreground font-display font-bold text-sm">JSA</span>
             </div>
             <div className="hidden sm:block">
-              <p className="font-display font-bold text-sm text-foreground leading-tight">Airconditioning</p>
-              <p className="text-xs text-muted-foreground">& Refrigeration</p>
+              <p className={`font-display font-bold text-sm leading-tight transition-colors duration-500 ${
+                isScrolled ? "text-foreground" : "text-primary-foreground"
+              }`}>Airconditioning</p>
+              <p className={`text-xs transition-colors duration-500 ${
+                isScrolled ? "text-muted-foreground" : "text-primary-foreground/70"
+              }`}>& Refrigeration</p>
             </div>
           </div>
 
@@ -52,7 +60,11 @@ const Header = () => {
               <button
                 key={item.id}
                 onClick={() => scrollToSection(item.id)}
-                className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-lg"
+                className={`px-4 py-2 text-sm font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-lg ${
+                  isScrolled 
+                    ? "text-muted-foreground hover:text-foreground" 
+                    : "text-primary-foreground/80 hover:text-primary-foreground"
+                }`}
               >
                 {item.name}
               </button>
@@ -63,7 +75,11 @@ const Header = () => {
           <div className="hidden lg:flex items-center gap-4">
             <a
               href="tel:0447881898"
-              className="flex items-center gap-2 text-sm font-medium text-foreground hover:text-accent transition-colors"
+              className={`flex items-center gap-2 text-sm font-medium transition-colors ${
+                isScrolled 
+                  ? "text-foreground hover:text-accent" 
+                  : "text-primary-foreground hover:text-accent"
+              }`}
             >
               <Phone className="w-4 h-4" />
               0447 881 898
@@ -75,7 +91,9 @@ const Header = () => {
 
           {/* Mobile Menu */}
           <button
-            className="lg:hidden p-2 text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-lg"
+            className={`lg:hidden p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 rounded-lg transition-colors ${
+              isScrolled ? "text-foreground" : "text-primary-foreground"
+            }`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMobileMenuOpen}
