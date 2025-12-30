@@ -32,7 +32,6 @@ const Hero = () => {
             <span className="text-accent font-medium text-sm uppercase tracking-widest">
               Newcastle & Hunter Region
             </span>
-            <span className="text-primary-foreground/60 text-xs ml-2">Licence: 470120C</span>
           </div>
 
           {/* Main Headline */}
@@ -45,10 +44,11 @@ const Hero = () => {
           </h1>
 
           {/* Description */}
-          <p className="text-lg sm:text-xl text-primary-foreground/80 max-w-md mb-10 leading-relaxed opacity-0 animate-fade-up delay-200">
+          <p className="text-lg sm:text-xl text-primary-foreground/80 max-w-md mb-4 leading-relaxed opacity-0 animate-fade-up delay-200">
             Family-owned air conditioning specialists. Expert installations, 
             repairs, and maintenance you can trust.
           </p>
+          <p className="text-primary-foreground/60 text-xs mb-10 opacity-0 animate-fade-up delay-200">Licence: 470120C</p>
 
           {/* CTAs */}
           <div className="flex flex-wrap items-center gap-4 mb-16 opacity-0 animate-fade-up delay-300">
