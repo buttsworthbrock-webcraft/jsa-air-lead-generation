@@ -14,7 +14,7 @@ export default function Logo({ className = "", color = "currentColor" }: { class
       </text>
       <text
         x="230"
-        y="55"
+        y="45"
         fontFamily="'Oktah Neue', Arial, Helvetica, sans-serif"
         fontSize="36"
         fontWeight="300"
