@@ -127,7 +127,7 @@ const ServiceAreaMap = () => {
   }, []);
 
   return (
-    <section id="service-area" className="py-16 md:py-24 bg-muted/30" aria-labelledby="service-area-heading">
+    <section id="service-areas" className="py-16 md:py-24 bg-muted/30" aria-labelledby="service-area-heading">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 bg-accent/10 text-accent px-4 py-2 rounded-full text-sm font-medium mb-4">
